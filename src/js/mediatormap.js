@@ -36,18 +36,13 @@ var MediatorMap = function (bus, coreView) {
 		
 		if(end <= start) return; 
 		
-		//console.log('start: '+start);
-		//console.log('end: '+end);
-		
 		var className = classes.substring(start, end);
-		
-		//console.log('className: '+className);
 		
 		if( map[className] )
 		{
 			
 			var mediator = new map[className]( _bus, jQuery(targ) );
-			//jQuery.data('mediator', mediator); // Store so we can easily remove?
+			$(targ).data('mediator', mediator);
 		}
 		else
 		{
