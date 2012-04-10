@@ -23,7 +23,7 @@ $(document).ready(function(){
 	var model		= new namespace.project.Model( bus );
 
 	// Adding views to the main view
-	coreView.append("<h2 class='view-clock'>Clock</h2>");
+	controller.setupViews(coreView);
 	
 	// Start
 	controller.startTimer();

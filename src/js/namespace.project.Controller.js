@@ -18,6 +18,11 @@ namespace.project.Controller = function( bus ) {
 /**
  * Starts the timer running
  */
+ 
+namespace.project.Controller.prototype.setupViews = function(coreView) {
+	coreView.append("<h2 class='view-clock'>Clock</h2>");
+}
+ 
 namespace.project.Controller.prototype.startTimer = function() {
 	
 	var self = this;
