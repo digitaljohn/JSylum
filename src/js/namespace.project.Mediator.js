@@ -16,8 +16,6 @@ namespace.project.Mediator = function( bus, view ) {
 	this._bus.addEventListener( 'timeChanged', function( event )
 	{
 		self._view.html(namespace.project.Mediator.TIME_PREFIX+event.time);
-		//console.log("Mediator Time changed to: "+event.time);
-		//self.setTime( new Date() );
 	} );
 	
 	
