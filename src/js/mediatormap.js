@@ -36,12 +36,12 @@ var MediatorMap = function (bus, coreView) {
 		
 		if(end <= start) return; 
 		
-		console.log('start: '+start);
-		console.log('end: '+end);
+		//console.log('start: '+start);
+		//console.log('end: '+end);
 		
 		var className = classes.substring(start, end);
 		
-		console.log('className: '+className);
+		//console.log('className: '+className);
 		
 		if( map[className] )
 		{
