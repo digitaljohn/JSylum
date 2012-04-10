@@ -12,25 +12,15 @@ namespace.project.Model = function( bus, data ) {
 	
 	this._data = data || {};
 	
-	this._bus.addEventListener( 'tick', function( event )
+	
+	this.onTick = function( event )
 	{
 		self.setTime( new Date() );
-	} );
+	}
 	
-	/**
-	 * Dispatched when the time is updated
-	 * @type {namespace.Event}
-	 */
-	//this.onTimeChanged = new namespace.Event( this );
 	
-	/**
-	 * @private
-	 * The data stored in this Model
-	 * @type {Object}
-	 */
-	 
 	
-	 
+	this._bus.addEventListener( 'tick', this.onTick);
 	
 }
 
