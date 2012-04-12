@@ -2,46 +2,39 @@
  * @author mr.doob / http://mrdoob.com/
  */
 
-var EventBus = function () {
-
+var EventBus = function ()
+{
 	var listeners = {};
 
-	this.addEventListener = function ( type, listener ) {
-
-		if ( listeners[ type ] == undefined ) {
-
+	this.addEventListener = function(type, listener)
+	{
+		if(listeners[ type ] == undefined)
+		{
 			listeners[ type ] = [];
-
 		}
 
-		if ( listeners[ type ].indexOf( listener ) === - 1 ) {
-
+		if(listeners[ type ].indexOf( listener ) === -1)
+		{
 			listeners[ type ].push( listener );
-
 		}
 
 	};
 
-	this.dispatchEvent = function ( event ) {
-
-		for ( var listener in listeners[ event.type ] ) {
-
+	this.dispatchEvent = function( event )
+	{
+		for(var listener in listeners[ event.type ])
+		{
 			listeners[ event.type ][ listener ]( event );
-
 		}
-
 	};
 
-	this.removeEventListener = function ( type, listener ) {
-
+	this.removeEventListener = function( type, listener )
+	{
 		var index = listeners[ type ].indexOf( listener );
 
-		if ( index !== - 1 ) {
-
+		if ( index !== - 1 )
+		{
 			listeners[ type ].splice( index, 1 );
-
 		}
-
 	};
-
 };

@@ -6,14 +6,13 @@
  * @param {Object} dom References to DOM objects used in this view
  * @constructor
  */
-namespace.project.Mediator = function( bus, view ) {
-	
-	this._bus = bus;
+namespace.project.Mediator = function( view ) {
+
 	this._view = view;
 	
 	var self = this;
 	
-	this._bus.addEventListener( 'timeChanged', function( event )
+	$.Bus.addEventListener( 'timeChanged', function( event )
 	{
 		self._view.html(namespace.project.Mediator.TIME_PREFIX+event.time);
 	} );

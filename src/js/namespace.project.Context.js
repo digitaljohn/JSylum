@@ -7,8 +7,11 @@ $(document).ready(function(){
 	
 	// Framework Setup
 	var coreView = $("#coreView");
-	var bus = new EventBus();
-	var mediatorMap = new MediatorMap( bus, coreView );
+	
+	//var bus = new EventBus();
+	$.Bus = new EventBus();
+	
+	var mediatorMap = new MediatorMap( coreView );
 
 
 
@@ -19,8 +22,8 @@ $(document).ready(function(){
 	mediatorMap.add('clock', namespace.project.Mediator);
 	
 	// Classes
-	var controller	= new namespace.project.Controller( bus );
-	var model		= new namespace.project.Model( bus );
+	var controller	= new namespace.project.Controller();
+	var model		= new namespace.project.Model();
 
 	// Adding views to the main view
 	controller.setupViews(coreView);

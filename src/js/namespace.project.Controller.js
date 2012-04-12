@@ -4,9 +4,7 @@
  * @param {*} model The data Model for this Controller
  * @constructor
  */
-namespace.project.Controller = function( bus ) {
-	
-	this._bus = bus;
+namespace.project.Controller = function() {
 	
 	/**
 	 * @private
@@ -20,15 +18,14 @@ namespace.project.Controller = function( bus ) {
  */
  
 namespace.project.Controller.prototype.setupViews = function(coreView) {
-	coreView.append("<h2 class='view-clock'>Clock</h2>");
+	coreView.append("<h2 class='view-clock' data-view='clock'>Clock</h2>");
+	
+	$.mediate();
 }
  
 namespace.project.Controller.prototype.startTimer = function() {
-	
-	var self = this;
-	
 	var tick = function() {
-		self._bus.dispatchEvent( { type: 'tick' } );
+		$.Bus.dispatchEvent( { type: 'tick' } );
 	}
 	
 	this._timer = setInterval( tick, 1000 );

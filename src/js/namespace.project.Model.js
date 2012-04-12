@@ -4,11 +4,9 @@
  * @param {Object=} data Initial data for the model
  * @constructor
  */
-namespace.project.Model = function( bus, data ) {
+namespace.project.Model = function( data ) {
 	
 	var self = this;
-	
-	this._bus = bus;
 	
 	this._data = data || {};
 	
@@ -20,7 +18,7 @@ namespace.project.Model = function( bus, data ) {
 	
 	
 	
-	this._bus.addEventListener( 'tick', this.onTick);
+	$.Bus.addEventListener( 'tick', this.onTick);
 	
 }
 
@@ -36,5 +34,5 @@ namespace.project.Model.prototype.getTime = function() {
  */
 namespace.project.Model.prototype.setTime = function( time ) {
 	this._data.time = time;
-	this._bus.dispatchEvent( { type: 'timeChanged', time: this._data.time } );
+	$.Bus.dispatchEvent( { type: 'timeChanged', time: this._data.time } );
 }

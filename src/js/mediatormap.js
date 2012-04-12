@@ -2,9 +2,8 @@
  * @author mr.doob / http://mrdoob.com/
  */
 
-var MediatorMap = function (bus, coreView) {
+var MediatorMap = function (coreView) {
 
-	var _bus = bus;
 	var _coreView = coreView;
 	var map = [];
 
@@ -17,41 +16,16 @@ var MediatorMap = function (bus, coreView) {
 	};
 	
 	
-	var onNodeInsert = function ( event ) {
-		var targ = event.target;
+	$.mediate = function()
+	{
+		var views = $('[data-view]');
 		
-		if(targ.nodeType != 1) return;
-		
-		var classes = targ.getAttribute('class');
-		
-		if(!classes) return;
-		
-		var start = classes.indexOf("view-");
-		if(start == -1) return;
-		
-		start += 5;
-		
-		var end = classes.indexOf(" ", start);
-		if(end == -1) end = classes.length;
-		
-		if(end <= start) return; 
-		
-		var className = classes.substring(start, end);
-		
-		if( map[className] )
-		{
-			
-			var mediator = new map[className]( _bus, jQuery(targ) );
-			$(targ).data('mediator', mediator);
-		}
-		else
-		{
-			return
-		}
+		views.each(function(){
+			obj = $(this);
+			var mediator = new map[obj.data('view')]( obj );
+			obj.data('mediator', mediator);
+			obj.removeData('view');
+		});
 	}
-	
-	coreView.bind( 'DOMNodeInserted', onNodeInsert, false );
-	
-	
 
 };
