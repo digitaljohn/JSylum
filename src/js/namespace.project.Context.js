@@ -5,9 +5,12 @@
 $(document).ready(function(){
 	
 	// Framework Setup
-	var mediatorMap = new MediatorMap();
+	mediatorMap = new MediatorMap();
+	
 	eventBus = commandMap = new EventBus();
+
 	injector = new Injector();
+	
 	
 	// Shortcuts
 	commands = namespace.project.commands;

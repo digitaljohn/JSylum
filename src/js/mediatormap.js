@@ -12,7 +12,7 @@ var MediatorMap = function () {
 	};
 	
 	
-	$.mediate = function()
+	this.mediate = function()
 	{
 		// Find unmediated views (DOM elements with the data-view attribute)
 		var views = $('[data-view]');
