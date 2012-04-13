@@ -4,14 +4,13 @@
  * @param {*} view The jQuery DOM Element for the view
  * @constructor
  */
-namespace.project.mediators.Tools = function( v ) {
+namespace.project.mediators.Tools = function( view ) {
 	var self = this;
 
-	this.view = v;
+	this.view = view;
+	this._addButton = $('.add_digital_clock', this.view);
 	
-	var addButton = $('.add_digital_clock', v);
-	
-	addButton.bind('click', function(){
+	this._addButton.bind('click', function(){
 		eventBus.dispatchEvent( { type: 'addDigitalClock' } );
 	});
 }

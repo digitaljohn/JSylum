@@ -4,35 +4,44 @@
  * @param {*} view The jQuery DOM Element for the view
  * @constructor
  */
-namespace.project.mediators.Clock = function( v ) {
+namespace.project.mediators.Clock = function( view ) {
+	
+	this.model = injector.getSingleton(models.Clock);
+	this.view = view;
+	
+	this.clockDisplay = $('span.display', this.view);
+	this.closeButton = $('a.close', this.view);
+	
+	
 	var self = this;
-	
-	this.view = v;
-	var clockDisplay = $('span.display', v);
-	var closeButton = $('a.close', v);
-	
-	var m = injector.getSingleton(models.Clock);
-	
-	this.onTimeChanged = function(event)
-	{
-		console.log('timeChanged mediator');
-		clockDisplay.html(mediators.Clock.TIME_PREFIX+m.time);
-	}
-	
-	eventBus.addEventListener( 'timeChanged', this.onTimeChanged );
-	
-	this.onTimeChanged();
-	
-	closeButton.bind('click', function(){
-		self.view.remove();
-		$.mediate();
+
+	//We add an inline function. How to remove the listener?
+	eventBus.addEventListener( 'timeChanged', function(){
+		self.onTimeChanged();
 	});
 	
-	this.destroy = function(event)
-	{
-		// Should we set HTML to ''?
-		eventBus.removeEventListener( 'timeChanged', this.onTimeChanged );
-	}
+	this.closeButton.bind('click', function(){
+		self.destroy();
+	});
+	
+
+	this.onTimeChanged();
+}
+
+
+namespace.project.mediators.Clock.prototype.onTimeChanged = function( event ) 
+{
+	console.log('timeChanged mediator');
+	this.clockDisplay.html(mediators.Clock.TIME_PREFIX+this.model.time);
+}
+
+
+namespace.project.mediators.Clock.prototype.destroy = function( event ) 
+{
+	// Should we set HTML to ''?
+	this.view.remove();
+	eventBus.removeEventListener( 'timeChanged', this.onTimeChanged );
+	mediatorMap.mediate();
 }
 
 /**

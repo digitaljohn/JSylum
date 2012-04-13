@@ -12,7 +12,7 @@ var MediatorMap = function () {
 	};
 	
 	
-	this.mediate = function()
+	this.mediate = function(type)
 	{
 		// Find unmediated views (DOM elements with the data-view attribute)
 		var views = $('[data-view]');
@@ -40,7 +40,7 @@ var MediatorMap = function () {
 			obj = mediators[i];
 			
 			// Is the view still in the root document DOM?
-			inDOM = !$.isDisconnected(obj.view.context);
+			inDOM = !mediatorMap.isDisconnected(obj.view.context);
 			
 			// If not… flush it!
 			if(!inDOM)
@@ -54,7 +54,7 @@ var MediatorMap = function () {
 		}
 	}
 	
-	$.isDisconnected = function(node)
+	this.isDisconnected = function(node)
 	{
 		return !node || !node.parentNode || node.parentNode.nodeType === 11;
 	}
