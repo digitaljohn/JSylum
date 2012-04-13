@@ -1,36 +1,32 @@
-
 /**
  * Generic onReady function called from all pages.
- * Set up your page initialisation code by adding it's ID to the switch statement
  */
+
 $(document).ready(function(){
 	
 	// Framework Setup
-	var coreView = $("#coreView");
+	var mediatorMap = new MediatorMap();
+	eventBus = commandMap = new EventBus();
+	injector = new Injector();
 	
-	//var bus = new EventBus();
-	$.Bus = new EventBus();
-	
-	var mediatorMap = new MediatorMap( coreView );
+	// Shortcuts
+	commands = namespace.project.commands;
+	models = namespace.project.models;
+	mediators = namespace.project.mediators;
 
-
-
-
-
+	// Singleton Models
+	injector.mapSingleton(models.Clock);
 
 	// View Mediators
-	mediatorMap.add('clock', namespace.project.Mediator);
+	mediatorMap.mapView('tools', mediators.Tools);
+	mediatorMap.mapView('clock', mediators.Clock);
 	
-	// Classes
-	var controller	= new namespace.project.Controller();
-	var model		= new namespace.project.Model();
+	// Command Map
+	commandMap.mapEvent( 'addDigitalClock', commands.addClock);
+	
+	// Adding views to the main view then start
+	commands.setupViews();
+	commands.startTimer();
 
-	// Adding views to the main view
-	controller.setupViews(coreView);
-	
-	// Start
-	controller.startTimer();
-
-	
 });
 

@@ -37,4 +37,10 @@ var EventBus = function ()
 			listeners[ type ].splice( index, 1 );
 		}
 	};
+	
+	// TODO: Needs completing for single fire
+	this.mapEvent = function( type, listener, singleFire )
+	{
+		this.addEventListener( type, listener );
+	}
 };
