@@ -12,20 +12,19 @@ namespace.project.mediators.Clock = function( view ) {
 	this.clockDisplay = $('span.display', this.view);
 	this.closeButton = $('a.close', this.view);
 	
-	
 	var self = this;
 
-	//We add an inline function. How to remove the listener?
-	eventBus.addEventListener( 'timeChanged', function(){
+	//How ugly is that?
+	eventBus.addEventListener( 'timeChanged', this.timeListener = function(){
 		self.onTimeChanged();
 	});
 	
 	this.closeButton.bind('click', function(){
 		self.destroy();
 	});
-	
 
 	this.onTimeChanged();
+
 }
 
 
@@ -40,7 +39,8 @@ namespace.project.mediators.Clock.prototype.destroy = function( event )
 {
 	// Should we set HTML to ''?
 	this.view.remove();
-	eventBus.removeEventListener( 'timeChanged', this.onTimeChanged );
+	//this is obviously not working
+	eventBus.removeEventListener( 'timeChanged', this.timeListener );
 	mediatorMap.mediate();
 }
 
