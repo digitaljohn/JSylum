@@ -6,47 +6,36 @@
  */
 namespace.project.mediators.Clock = function( view ) {
 	
+	var self = this;
+	
 	this.model = injector.getSingleton(models.Clock);
 	this.view = view;
+	
+	this.TIME_PREFIX = "The Time Is: ";
 	
 	this.clockDisplay = $('span.display', this.view);
 	this.closeButton = $('a.close', this.view);
 	
-	var self = this;
-
-	//How ugly is that?
-	eventBus.addEventListener( 'timeChanged', this.timeListener = function(){
-		self.onTimeChanged();
-	});
+	this.onTimeChanged = function( event )
+	{
+		console.log('timeChanged mediator');
+		self.clockDisplay.html(self.TIME_PREFIX+self.model.time);
+	}
 	
-	this.closeButton.bind('click', function(){
-		self.destroy();
-	});
+	this.onCloseClick = function( event ) 
+	{
+		self.view.remove();
+		mediatorMap.mediate();
+	}
+	
+	this.destroy = function()
+	{
+		eventBus.removeEventListener( 'timeChanged', self.onTimeChanged );
+	}
+	
+	eventBus.addEventListener( 'timeChanged', this.onTimeChanged );
+	this.closeButton.bind('click', this.onCloseClick);
 
 	this.onTimeChanged();
 
 }
-
-
-namespace.project.mediators.Clock.prototype.onTimeChanged = function( event ) 
-{
-	console.log('timeChanged mediator');
-	this.clockDisplay.html(mediators.Clock.TIME_PREFIX+this.model.time);
-}
-
-
-namespace.project.mediators.Clock.prototype.destroy = function( event ) 
-{
-	// Should we set HTML to ''?
-	this.view.remove();
-	//this is obviously not working
-	eventBus.removeEventListener( 'timeChanged', this.timeListener );
-	mediatorMap.mediate();
-}
-
-/**
- * The message to prefix the current time with
- * @const
- * @type {string}
- */
-namespace.project.mediators.Clock.TIME_PREFIX = "The Time Is: ";

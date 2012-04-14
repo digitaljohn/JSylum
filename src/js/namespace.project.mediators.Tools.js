@@ -5,12 +5,18 @@
  * @constructor
  */
 namespace.project.mediators.Tools = function( view ) {
+	
 	var self = this;
 
 	this.view = view;
-	this._addButton = $('.add_digital_clock', this.view);
+	this.addButton = $('.add_digital_clock', this.view);
 	
-	this._addButton.bind('click', function(){
+	this.addButton.bind('click', function(){
 		eventBus.dispatchEvent( { type: 'addDigitalClock' } );
 	});
+	
+	this.destroy = function()
+	{
+		
+	}
 }

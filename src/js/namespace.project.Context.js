@@ -6,9 +6,7 @@ $(document).ready(function(){
 	
 	// Framework Setup
 	mediatorMap = new MediatorMap();
-	
 	eventBus = commandMap = new EventBus();
-
 	injector = new Injector();
 	
 	
@@ -30,6 +28,6 @@ $(document).ready(function(){
 	// Adding views to the main view then start
 	commands.setupViews();
 	commands.startTimer();
-
+	
 });
 

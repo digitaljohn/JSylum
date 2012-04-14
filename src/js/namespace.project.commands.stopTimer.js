@@ -2,6 +2,6 @@
  * Stops the clock ticker
  */
 namespace.project.commands.stopTimer = function() {
-	var m = injector.getSingleton(models.Clock);
-	clearInterval( m.ticker );
+	var model = injector.getSingleton(models.Clock);
+	clearInterval( model.ticker );
 }

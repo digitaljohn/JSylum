@@ -6,9 +6,6 @@ namespace.project.commands.startTimer = function() {
 		eventBus.dispatchEvent( { type: 'tick' } );
 	}
 	
-	var m = injector.getSingleton(models.Clock);
-	
-	m.ticker = setInterval( tick, 1000 );
-	
-	tick();
+	var model = injector.getSingleton(models.Clock);
+	model.ticker = setInterval( tick, 1000 );
 }
