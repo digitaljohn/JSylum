@@ -4,7 +4,7 @@
  * @param {Object=} data Initial data for the model
  * @constructor
  */
-namespace.project.models.Clock = function() {
+namespace.models.Clock = function() {
 	var self = this;
 
 	this.time = new Date();
@@ -18,7 +18,7 @@ namespace.project.models.Clock = function() {
 	this.setTime = function( time )
 	{
 		this.time = time;
-		eventBus.dispatchEvent( { type: 'timeChanged', time: this.time } );
+		JSylum.eventBus.dispatchEvent( { type: 'timeChanged', time: this.time } );
 	}
 	
 	this.onTick = function( event )
@@ -26,5 +26,5 @@ namespace.project.models.Clock = function() {
 		self.setTime( new Date() );
 	}
 	
-	eventBus.addEventListener( 'tick', this.onTick);
+	JSylum.eventBus.addEventListener( 'tick', this.onTick);
 }

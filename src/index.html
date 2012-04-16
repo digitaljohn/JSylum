@@ -34,9 +34,8 @@
 		<h1>JSylum</h1>
 		<h2>Project template with CSS minification, JS compilation and JSDoc generation</h2>
 		
-		<div data-view="tools">
+		<div id="tools">
 			<h2>Tools</h2>
-			<button type="button" class="add_digital_clock">Add Digital Clock</button>
 		</div>
 		
 		<div id="coreView" />
@@ -46,23 +45,31 @@
 		<!--[END]-->
 		
 		<!--[BEGIN:JS:SRC]-->
-		<script src="js/plugins.js"></script>
-		<script src="js/eventbus.js"></script>
-		<script src="js/injector.js"></script>
-		<script src="js/mediatormap.js"></script>
-		<script src="js/namespace.js"></script>
+		<script src="js/jsylum/jsylum.js"></script>
+		<script src="js/jsylum/eventbus.js"></script>
+		<script src="js/jsylum/injector.js"></script>
+		<script src="js/jsylum/mediatormap.js"></script>
 		
-		<script src="js/namespace.project.commands.setupViews.js"></script>
-		<script src="js/namespace.project.commands.addClock.js"></script>
-		<script src="js/namespace.project.commands.startTimer.js"></script>
-		<script src="js/namespace.project.commands.stopTimer.js"></script>
+		<script src="js/constants/namespace.js"></script>
 		
-		<script src="js/namespace.project.mediators.Clock.js"></script>
-		<script src="js/namespace.project.mediators.Tools.js"></script>
+		<script src="js/commands/setupViews.js"></script>
+		<script src="js/commands/addDigitalClock.js"></script>
+		<script src="js/commands/addAnalogClock.js"></script>
+		<script src="js/commands/startTimer.js"></script>
+		<script src="js/commands/stopTimer.js"></script>
 		
-		<script src="js/namespace.project.models.Clock.js"></script>
+		<script src="js/views/AnalogClock.js"></script>
+		<script src="js/views/DigitalClock.js"></script>
+		<script src="js/views/Tools.js"></script>
 		
-		<script src="js/namespace.project.Context.js"></script>
+		<script src="js/mediators/Clock.js"></script>
+		<script src="js/mediators/Tools.js"></script>
+		
+		<script src="js/models/Clock.js"></script>
+		
+		<script src="js/Context.js"></script>
+		
+		
 		<!--[END]-->
 		
 	</body>

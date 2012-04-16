@@ -4,7 +4,7 @@
 
 	ANT build file for HTML/CSS/JavaScript based projects
 	
-	@author Justin Windle
+	@author DigitalJohn
 	
 	Minifies CSS using YUI Compressor
 	Compiles JavaScript using Google Closure Compiler
