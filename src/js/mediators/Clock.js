@@ -10,8 +10,6 @@ namespace.mediators.Clock = JSylum.Mediator.extend({
 	init: function(view){
 		this._super(view);
 		
-		console.log('Clock mediator');
-		
 		this.model = this.getSingleton(models.Clock);
 		
 		this.addContextListener( 'timeChanged', this.onTimeChanged, this );
