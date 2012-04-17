@@ -10,16 +10,18 @@ namespace.views.Tools = JSylum.View.extend({
 
 	init: function(container){
 		this._super(container);
-		
+	},
+	
+	draw: function(){
 		this.addDigitalButton = document.createElement("button");
 		this.addDigitalButton.innerHTML = "Digital";
-		container.appendChild( this.addDigitalButton );
+		this.container.appendChild( this.addDigitalButton );
 		
 		this.addAnalogButton = document.createElement("button");
 		this.addAnalogButton.innerHTML = "Analog";
-		container.appendChild( this.addAnalogButton );
+		this.container.appendChild( this.addAnalogButton );
 		
-		this.mediate();
+		this._super();
 	},
 	
 	destroy: function(){

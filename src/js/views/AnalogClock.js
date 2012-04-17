@@ -5,11 +5,13 @@
  * @constructor
  */
  
-namespace.views.AnalogClock = JSylum.View.extend({
+namespace.views.AnalogClock = namespace.views.BaseClock.extend({
 
 	init: function(container){
 		this._super(container);
-		
+	},
+	
+	draw: function(){
 		this.domElement = document.createElement("canvas");
 		this.container.appendChild( this.domElement );
 	
@@ -17,13 +19,8 @@ namespace.views.AnalogClock = JSylum.View.extend({
 		this.domElement.height = 100;
 	
 		this.ctx = this.domElement.getContext("2d");
-	
-		// Close Button
-		this.closeButton = document.createElement("button");
-		this.closeButton.innerHTML = "X";
-		this.container.appendChild( this.closeButton );
 		
-		this.mediate();
+		this._super();
 	},
 	
 	redraw: function(){
@@ -56,7 +53,6 @@ namespace.views.AnalogClock = JSylum.View.extend({
 	
 	destroy: function(){
 		this.container.removeChild(this.domElement);
-		this.container.removeChild(this.closeButton);
 		
 		return this._super();
 		

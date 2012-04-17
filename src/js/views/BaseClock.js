@@ -5,28 +5,26 @@
  * @constructor
  */
  
-namespace.views.DigitalClock = namespace.views.BaseClock.extend({
+namespace.views.BaseClock = JSylum.View.extend({
 
 	init: function(container){
 		this._super(container);
 	},
 	
 	draw: function(){
-		this.domElement = document.createElement("h2");
-		this.container.appendChild( this.domElement );
+		// Close Button
+		this.closeButton = document.createElement("button");
+		this.closeButton.innerHTML = "X";
+		this.container.appendChild( this.closeButton );
 		
 		this._super();
 	},
 	
-	setTime: function(time)
-	{
-		this.domElement.innerHTML = time;
-	},
-	
 	destroy: function(){
-		this.container.removeChild(this.domElement);
+		this.container.removeChild(this.closeButton);
 		
 		return this._super();
+		
 	}
 	
 });
