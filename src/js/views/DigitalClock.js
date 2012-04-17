@@ -13,7 +13,6 @@ namespace.views.DigitalClock = JSylum.View.extend({
 		this.domElement = document.createElement("h2");
 		this.container.appendChild( this.domElement );
 	
-	
 		// Close Button
 		this.closeButton = document.createElement("button");
 		this.closeButton.innerHTML = "X";
@@ -31,9 +30,7 @@ namespace.views.DigitalClock = JSylum.View.extend({
 		this.container.removeChild(this.domElement);
 		this.container.removeChild(this.closeButton);
 		
-		
 		return this._super();
-		
 	}
 	
 });

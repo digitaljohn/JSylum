@@ -6,9 +6,13 @@
  */
  
  
-JSylum.Model = JSylum.Base.extend({
+JSylum.Context = JSylum.Base.extend({
 
 	init: function(){
+		injector = new Injector();
+		injector.mapSingleton( MediatorMap );
+		injector.mapSingleton( EventBus );
+		
 		this._super();
 	}
 	

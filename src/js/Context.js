@@ -2,26 +2,26 @@
  * Generic onReady function called from all pages.
  */
 
-$(document).ready(function(){
-	
-	// Framework Setup
-	JSylum.init();
+namespace.Context = JSylum.Context.extend({
 
-	// Singleton Models
-	JSylum.injector.mapSingleton(models.Clock);	
-
-	// View Mediators
-	JSylum.mediatorMap.mapView(views.AnalogClock, mediators.Clock);
-	JSylum.mediatorMap.mapView(views.DigitalClock, mediators.Clock);
-	JSylum.mediatorMap.mapView(views.Tools, mediators.Tools);
+	init: function(){
+		this._super();
+		
+		// Singleton Models
+		injector.mapSingleton(models.Clock);	
 	
-	// Command Map
-	JSylum.commandMap.mapEvent( 'addDigitalClock', commands.addDigitalClock);
-	JSylum.commandMap.mapEvent( 'addAnalogClock', commands.addAnalogClock);
-	
-	// Adding views to the main view then start
-	commands.setupViews();
-	commands.startTimer();
+		// View Mediators
+		this.mediatorMap.mapView(views.AnalogClock, mediators.Clock);
+		this.mediatorMap.mapView(views.DigitalClock, mediators.Clock);
+		this.mediatorMap.mapView(views.Tools, mediators.Tools);
+		
+		// Command Map
+		this.commandMap.mapEvent( 'addDigitalClock', commands.addDigitalClock);
+		this.commandMap.mapEvent( 'addAnalogClock', commands.addAnalogClock);
+		
+		// Adding views to the main view then start
+		commands.setupViews();
+		commands.startTimer();
+	}
 	
 });
-

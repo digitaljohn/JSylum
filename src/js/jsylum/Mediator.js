@@ -9,6 +9,7 @@
 JSylum.Mediator = JSylum.Base.extend({
 
 	init: function(view){
+		this._super();
 		this.view = view;
 	},
 	

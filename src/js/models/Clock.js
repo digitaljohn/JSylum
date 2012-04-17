@@ -8,10 +8,13 @@
 namespace.models.Clock = JSylum.Model.extend({
 
 	init: function(){
+		this._super();
+		
 		this.time = new Date();
 		this.ticker = 0;
 		
 		this.addContextListener( 'tick', this.onTick, this);
+		
 	},
 	
 	getTime: function(){

@@ -4,24 +4,31 @@
  * @param {*} view The jQuery DOM Element for the view
  * @constructor
  */
- 
+
+JSylum = {};
  
 JSylum.Base = Class.extend({
 
+	init: function(){
+		this.mediatorMap = injector.getSingleton( MediatorMap );
+		this.commandMap = this.eventBus = injector.getSingleton( EventBus );
+	},
+
 	addContextListener: function(type, listener, scope){
-		JSylum.eventBus.addEventListener( type, listener, scope);
+		
+		this.eventBus.addEventListener( type, listener, scope);
 	},
 	
 	removeContextListener: function(type, listener, scope){
-		JSylum.eventBus.removeEventListener( type, listener, scope);
+		this.eventBus.removeEventListener( type, listener, scope);
 	},
 	
 	dispatch: function(event){
-		JSylum.eventBus.dispatchEvent( event );
+		this.eventBus.dispatchEvent( event );
 	},
 	
 	getSingleton: function(type){
-		return JSylum.injector.getSingleton(type);
+		return injector.getSingleton(type);
 	}
 	
 });

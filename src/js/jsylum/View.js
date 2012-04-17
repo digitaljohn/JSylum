@@ -10,10 +10,12 @@ JSylum.View = Class.extend({
 
 	init: function(container){
 		this.container = container;
+		
+		this.m = injector.getSingleton( MediatorMap ).mediate;
 	},
 	
 	mediate: function(){
-		JSylum.mediatorMap.mediate( this );
+		this.m( this );
 	},
 	
 	destroy: function(){
