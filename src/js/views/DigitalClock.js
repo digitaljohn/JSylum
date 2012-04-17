@@ -4,32 +4,36 @@
  * @param {*} view The jQuery DOM Element for the view
  * @constructor
  */
-namespace.views.DigitalClock = function(container)
-{
-	
-	this.container = container;
-	var self = this;
-	
-	
-	var domElement = document.createElement("h2");
-	container.appendChild( domElement );
-	
-	this.closeButton = document.createElement("button");
-	this.closeButton.innerHTML = "X";
-	container.appendChild( this.closeButton );
-	
-	
-	this.setTime = function(time)
-	{
-		domElement.innerHTML = time;
-	}
-	
-	this.destroy = function()
-	{
-		self.container.removeChild(domElement);
-		self.container.removeChild(self.closeButton);
-	}
-	
-	JSylum.mediatorMap.mediate( this );
+ 
+namespace.views.DigitalClock = JSylum.View.extend({
 
-}
+	init: function(container){
+		this._super(container);
+		
+		this.domElement = document.createElement("h2");
+		this.container.appendChild( this.domElement );
+	
+	
+		// Close Button
+		this.closeButton = document.createElement("button");
+		this.closeButton.innerHTML = "X";
+		this.container.appendChild( this.closeButton );
+		
+		this.mediate();
+	},
+	
+	setTime: function(time)
+	{
+		this.domElement.innerHTML = time;
+	},
+	
+	destroy: function(){
+		this.container.removeChild(this.domElement);
+		this.container.removeChild(this.closeButton);
+		
+		
+		return this._super();
+		
+	}
+	
+});

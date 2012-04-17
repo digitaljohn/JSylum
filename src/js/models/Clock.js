@@ -4,27 +4,27 @@
  * @param {Object=} data Initial data for the model
  * @constructor
  */
-namespace.models.Clock = function() {
-	var self = this;
+ 
+namespace.models.Clock = JSylum.Model.extend({
 
-	this.time = new Date();
-	this.ticker = 0;
+	init: function(){
+		this.time = new Date();
+		this.ticker = 0;
+		
+		this.addContextListener( 'tick', this.onTick, this);
+	},
 	
-	this.getTime = function()
-	{
-		return self.time;
-	}
+	getTime: function(){
+		return this.time;
+	},
 	
-	this.setTime = function( time )
-	{
+	setTime: function( time ){
 		this.time = time;
-		JSylum.eventBus.dispatchEvent( { type: 'timeChanged', time: this.time } );
+		this.dispatch( { type: 'timeChanged', time: this.time } );
+	},
+	
+	onTick: function(event){
+		this.setTime( new Date() );
 	}
 	
-	this.onTick = function( event )
-	{
-		self.setTime( new Date() );
-	}
-	
-	JSylum.eventBus.addEventListener( 'tick', this.onTick);
-}
+});

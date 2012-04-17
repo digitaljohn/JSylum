@@ -4,27 +4,29 @@
  * @param {*} view The jQuery DOM Element for the view
  * @constructor
  */
-namespace.views.Tools = function(container)
-{
+ 
+ 
+namespace.views.Tools = JSylum.View.extend({
 
-	this.container = container;
-	var self = this;
+	init: function(container){
+		this._super(container);
+		
+		this.addDigitalButton = document.createElement("button");
+		this.addDigitalButton.innerHTML = "Digital";
+		container.appendChild( this.addDigitalButton );
+		
+		this.addAnalogButton = document.createElement("button");
+		this.addAnalogButton.innerHTML = "Analog";
+		container.appendChild( this.addAnalogButton );
+		
+		this.mediate();
+	},
 	
-	this.addDigitalButton = document.createElement("button");
-	this.addDigitalButton.innerHTML = "Digital";
-	container.appendChild( this.addDigitalButton );
-	
-	this.addAnalogButton = document.createElement("button");
-	this.addAnalogButton.innerHTML = "Analog";
-	container.appendChild( this.addAnalogButton );
-	
-	
-	JSylum.mediatorMap.mediate( this );
-	
-	this.destroy = function()
-	{
+	destroy: function(){
 		this.container.removeChild(this.addDigitalButton);
 		this.container.removeChild(this.addAnalogButton);
+		
+		return this._super();
 	}
-
-}
+	
+});

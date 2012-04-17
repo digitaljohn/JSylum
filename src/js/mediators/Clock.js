@@ -4,33 +4,32 @@
  * @param {*} view The jQuery DOM Element for the view
  * @constructor
  */
-namespace.mediators.Clock = function( view ) {
-	
-	var self = this;
-	
-	this.model = JSylum.injector.getSingleton(models.Clock);
-	this.view = view;
-	
-	this.onTimeChanged = function( event )
-	{
-		console.log('timeChanged mediator');
+ 
+namespace.mediators.Clock = JSylum.Mediator.extend({
+
+	init: function(view){
+		this._super(view);
 		
-		view.setTime( self.model.time );
+		console.log('Clock mediator');
+		
+		this.model = this.getSingleton(models.Clock);
+		
+		this.addContextListener( 'timeChanged', this.onTimeChanged, this );
+		
+		this.view.closeButton.onclick = this.destroy.bind(this);
+		
+		this.onTimeChanged();
+	},
+	
+	onTimeChanged: function( event ){
+		console.log('timeChanged mediator');
+		this.view.setTime( this.model.time );
+	},
+	
+	destroy: function(){
+		this.removeContextListener( 'timeChanged', this.onTimeChanged, this );
+		
+		return this._super();
 	}
 	
-	this.destroy = function()
-	{
-		JSylum.eventBus.removeEventListener( 'timeChanged', self.onTimeChanged );
-		self.view.destroy();
-	}
-	
-	this.view.closeButton.onclick = function()
-	{
-		self.destroy();
-	}
-	
-	JSylum.eventBus.addEventListener( 'timeChanged', this.onTimeChanged );
-
-	this.onTimeChanged();
-
-}
+});

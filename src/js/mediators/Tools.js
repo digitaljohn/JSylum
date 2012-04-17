@@ -4,19 +4,23 @@
  * @param {*} view The jQuery DOM Element for the view
  * @constructor
  */
-namespace.mediators.Tools = function( view ) {
-	
-	var self = this;
+ 
+ 
+namespace.mediators.Tools = JSylum.Mediator.extend({
 
-	this.view = view;
+	init: function(view){
+		this._super(view);
+		
+		var self = this;
+		this.view.addDigitalButton.onclick = function()
+		{
+			self.dispatch( { type: 'addDigitalClock' } );
+		}
 	
-	this.view.addDigitalButton.onclick = function()
-	{
-		JSylum.eventBus.dispatchEvent( { type: 'addDigitalClock' } );
-	}
+		this.view.addAnalogButton.onclick = function()
+		{
+			self.dispatch( { type: 'addAnalogClock' } );
+		}
+	},
 	
-	this.view.addAnalogButton.onclick = function()
-	{
-		JSylum.eventBus.dispatchEvent( { type: 'addAnalogClock' } );
-	}
-}
+});

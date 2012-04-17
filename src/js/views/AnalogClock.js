@@ -4,70 +4,62 @@
  * @param {*} view The jQuery DOM Element for the view
  * @constructor
  */
-namespace.views.AnalogClock = function(container)
-{
-	
-	this.container = container;
-	
-	var self = this;
-	
-	
-	var value;
+ 
+namespace.views.AnalogClock = JSylum.View.extend({
 
-	var domElement = document.createElement("canvas");
-	container.appendChild( domElement );
+	init: function(container){
+		this._super(container);
+		
+		this.domElement = document.createElement("canvas");
+		this.container.appendChild( this.domElement );
 	
-	domElement.width = 100;
-	domElement.height = 100;
+		this.domElement.width = 100;
+		this.domElement.height = 100;
 	
-	var ctx = domElement.getContext("2d");
+		this.ctx = this.domElement.getContext("2d");
 	
+		// Close Button
+		this.closeButton = document.createElement("button");
+		this.closeButton.innerHTML = "X";
+		this.container.appendChild( this.closeButton );
+		
+		this.mediate();
+	},
 	
-	// Close Button
-	this.closeButton = document.createElement("button");
-	this.closeButton.innerHTML = "X";
-	container.appendChild( this.closeButton );
-	
-	
-	var redraw = function()
-	{
+	redraw: function(){
 		var to = (Math.PI*1.5);
-		var from = value * (Math.PI*2);
+		var from = this.value * (Math.PI*2);
 		from += to;
 	
 		// Clear
-		ctx.clearRect(0, 0, 100, 100);
+		this.ctx.clearRect(0, 0, 100, 100);
 	
 		// BG
-		ctx.fillStyle = "#FF1C0A";
-		ctx.fillRect(0, 0, 100, 100);
-		ctx.closePath();
+		this.ctx.fillStyle = "#FF1C0A";
+		this.ctx.fillRect(0, 0, 100, 100);
+		this.ctx.closePath();
 		
 		// BG Circle
-		ctx.fillStyle = "#00A308";
-		ctx.beginPath();
-		ctx.arc(50, 50, 50, from, to, true); 
-		ctx.lineTo(50, 50);
-		ctx.closePath();
-		ctx.fill();
-		
-		
-	}
+		this.ctx.fillStyle = "#00A308";
+		this.ctx.beginPath();
+		this.ctx.arc(50, 50, 50, from, to, true); 
+		this.ctx.lineTo(50, 50);
+		this.ctx.closePath();
+		this.ctx.fill();
+	},
 	
-	this.setTime = function(time)
+	setTime: function(time)
 	{
-		value = time.getSeconds() / 60;
-		redraw();
+		this.value = time.getSeconds() / 60;
+		this.redraw();
+	},
+	
+	destroy: function(){
+		this.container.removeChild(this.domElement);
+		this.container.removeChild(this.closeButton);
+		
+		return this._super();
+		
 	}
 	
-	this.destroy = function()
-	{
-		self.container.removeChild(domElement);
-		self.container.removeChild(self.closeButton);
-	}
-	
-	
-	JSylum.mediatorMap.mediate( this );
-	
-
-}
+});
