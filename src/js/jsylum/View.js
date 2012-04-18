@@ -19,6 +19,10 @@ JSylum.View = Class.extend({
 	draw: function(){
 		
 	},
+
+	redraw: function(){
+		
+	},
 	
 	destroy: function(){
 	

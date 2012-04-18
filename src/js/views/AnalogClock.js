@@ -24,6 +24,8 @@ namespace.views.AnalogClock = namespace.views.BaseClock.extend({
 	},
 	
 	redraw: function(){
+		this._super();
+
 		var to = (Math.PI*1.5);
 		var from = this.value * (Math.PI*2);
 		from += to;
@@ -55,7 +57,6 @@ namespace.views.AnalogClock = namespace.views.BaseClock.extend({
 		this.container.removeChild(this.domElement);
 		
 		return this._super();
-		
 	}
 	
 });
