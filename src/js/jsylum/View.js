@@ -8,8 +8,8 @@
  
 JSylum.View = Class.extend({
 
-	init: function(container){
-		this.container = container;
+	init: function(parent){
+		this.parent = parent;
 		
 		this.draw();
 		

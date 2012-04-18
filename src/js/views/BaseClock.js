@@ -7,21 +7,21 @@
  
 namespace.views.BaseClock = JSylum.View.extend({
 
-	init: function(container){
-		this._super(container);
+	init: function(parent){
+		this._super(parent);
 	},
 	
 	draw: function(){
 		// Close Button
 		this.closeButton = document.createElement("button");
 		this.closeButton.innerHTML = "X";
-		this.container.appendChild( this.closeButton );
+		this.parent.appendChild( this.closeButton );
 		
 		this._super();
 	},
 	
 	destroy: function(){
-		this.container.removeChild(this.closeButton);
+		this.parent.removeChild(this.closeButton);
 		
 		return this._super();
 		

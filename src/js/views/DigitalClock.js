@@ -7,13 +7,13 @@
  
 namespace.views.DigitalClock = namespace.views.BaseClock.extend({
 
-	init: function(container){
-		this._super(container);
+	init: function(parent){
+		this._super(parent);
 	},
 	
 	draw: function(){
 		this.domElement = document.createElement("h2");
-		this.container.appendChild( this.domElement );
+		this.parent.appendChild( this.domElement );
 		
 		this._super();
 	},
@@ -24,7 +24,7 @@ namespace.views.DigitalClock = namespace.views.BaseClock.extend({
 	},
 	
 	destroy: function(){
-		this.container.removeChild(this.domElement);
+		this.parent.removeChild(this.domElement);
 		
 		return this._super();
 	}

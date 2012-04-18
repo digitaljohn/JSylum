@@ -13,7 +13,7 @@ namespace.views.AnalogClock = namespace.views.BaseClock.extend({
 	
 	draw: function(){
 		this.domElement = document.createElement("canvas");
-		this.container.appendChild( this.domElement );
+		this.parent.appendChild( this.domElement );
 	
 		this.domElement.width = 100;
 		this.domElement.height = 100;
@@ -54,7 +54,7 @@ namespace.views.AnalogClock = namespace.views.BaseClock.extend({
 	},
 	
 	destroy: function(){
-		this.container.removeChild(this.domElement);
+		this.parent.removeChild(this.domElement);
 		
 		return this._super();
 	}

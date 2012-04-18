@@ -11,7 +11,7 @@ JSylum.Base = Class.extend({
 
 	init: function(){
 		this.mediatorMap = injector.getSingleton( MediatorMap );
-		this.commandMap = this.eventBus = injector.getSingleton( EventBus );
+		this.eventBus = injector.getSingleton( EventBus );
 	},
 
 	addContextListener: function(type, listener, scope){

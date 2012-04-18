@@ -1,7 +1,7 @@
-Springboard
+JSylum
 =============
 
-Springboard is an ultra minimal JavaScript / CSS and HTML project springboard.
+JSylum is an minimal JavaScript MVC framework that has many direct similaraties to the ActionScript framework, RobotLegs.
 
 It features a useful ANT build file which can:
 
