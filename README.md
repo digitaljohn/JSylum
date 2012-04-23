@@ -11,7 +11,6 @@ It features a useful ANT build file which can:
 * Generate JavaScript documentation using the [JSDoc Toolkit](http://code.google.com/p/jsdoc-toolkit/)
 * Sanitize HTML and inject variables at compile time
 
-Also included is a simple **JavaScript Model-View-Controller (MVC) template** (based on [Alex Netkachov's](http://www.alexatnet.com/content/model-view-controller-mvc-javascript)) which can optionally be used as a basis for your project.
 
 Quick Setup
 -------------
@@ -19,7 +18,7 @@ Quick Setup
 To get started, first clone the repository:
 
 	cd /your/workspace
-	git clone git@github.com:soulwire/Springboard.git YourProjectName
+	git clone git@github.com:digitaljohn/JSylum.git YourProjectName
 
 Run the **setup** task and enter your project's namespace when prompted:
 	
@@ -31,7 +30,7 @@ This will refactor the project template to match your namespace. You'll then be 
 
 ###Now Start Coding!
 
-Code is combined and compiled / minified using **blocks**. For example, the following block will compile the contained scripts into a single file (defined in [build.properties](https://github.com/soulwire/Springboard/blob/master/build.properties)) and compile using Closure Compiler. The build script will then replace this block with a reference to the compiled file.
+Code is combined and compiled / minified using **blocks**. For example, the following block will compile the contained scripts into a single file (defined in [build.properties](https://github.com/digitaljohn/JSylum/blob/master/build.properties)) and compile using Closure Compiler. The build script will then replace this block with a reference to the compiled file.
 
 	<!--[BEGIN:JS:SRC]-->
 	<script src="js/plugins.js"></script>
