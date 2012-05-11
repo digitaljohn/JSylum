@@ -4,28 +4,36 @@
  * @param {*} view The jQuery DOM Element for the view
  * @constructor
  */
- 
- 
-JSylum.View = Class.extend({
 
-	init: function(parent){
+(function(window) {
+
+var View = function() {
+  this.initialize();
+}
+
+var p = View.prototype;
+
+	p.parent;
+
+	p.initialize = function(parent) {
 		this.parent = parent;
-		
-		this.draw();
-		
-		JSylum.injector.getSingleton( MediatorMap ).mediate(this);
-	},
-	
-	draw: function(){
-		
-	},
 
-	redraw: function(){
-		
-	},
-	
-	destroy: function(){
-	
+		this.draw();
+
+		JSylum.injector.getSingleton( MediatorMap ).mediate(this);
 	}
-	
-});
+
+	p.draw = function() {
+
+	}
+
+	p.redraw = function() {
+
+	}
+
+	p.destroy = function() {
+
+	}
+
+window.View = View;
+}(window));

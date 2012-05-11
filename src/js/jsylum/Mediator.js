@@ -5,7 +5,32 @@
  * @constructor
  */
  
- 
+
+(function(window) {
+
+var Mediator = function() {
+  this.initialize();
+}
+
+var p = Mediator.prototype = new JSylum();
+
+	p.view;
+
+	p.JSylum_initialize = p.initialize;
+	p.initialize = function(parent) {
+		this.JSylum_initialize();
+
+		this.view = view;
+	}
+
+	p.destroy = function() {
+		this.view.destroy();
+	}
+
+window.Mediator = Mediator;
+}(window));
+
+ /*
 JSylum.Mediator = JSylum.Base.extend({
 
 	init: function(view){
@@ -18,3 +43,4 @@ JSylum.Mediator = JSylum.Base.extend({
 	}
 	
 });
+*/

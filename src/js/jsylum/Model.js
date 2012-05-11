@@ -5,6 +5,26 @@
  * @constructor
  */
  
+
+ (function(window) {
+
+var Model = function() {
+  this.initialize();
+}
+
+var p = Model.prototype;
+
+	p.initialize = function() {
+
+	}
+
+
+window.Model = Model;
+}(window));
+
+
+
+/*
  
 JSylum.Model = JSylum.Base.extend({
 
@@ -13,3 +33,5 @@ JSylum.Model = JSylum.Base.extend({
 	}
 	
 });
+
+*/
