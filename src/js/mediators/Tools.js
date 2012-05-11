@@ -6,7 +6,7 @@
  */
  
  
-namespace.mediators.Tools = JSylum.Mediator.extend({
+example.mediators.Tools = JSylum.Mediator.extend({
 
 	init: function(view){
 		this._super(view);
@@ -21,6 +21,6 @@ namespace.mediators.Tools = JSylum.Mediator.extend({
 		{
 			self.dispatch( { type: 'addAnalogClock' } );
 		}
-	},
+	}
 	
 });

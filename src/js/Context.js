@@ -2,26 +2,26 @@
  * Demo Context
  */
 
-namespace.Context = JSylum.Context.extend({
+example.Context = JSylum.Context.extend({
 
 	init: function(){
 		this._super();
 		
 		// Command Map
-		this.eventBus.mapEvent( 'addDigitalClock', commands.addDigitalClock);
-		this.eventBus.mapEvent( 'addAnalogClock', commands.addAnalogClock);
+		this.eventBus.mapEvent('addDigitalClock', example.commands.addDigitalClock);
+		this.eventBus.mapEvent('addAnalogClock', example.commands.addAnalogClock);
 	
 		// View Mediators
-		this.mediatorMap.mapView(views.AnalogClock, mediators.Clock);
-		this.mediatorMap.mapView(views.DigitalClock, mediators.Clock);
-		this.mediatorMap.mapView(views.Tools, mediators.Tools);
+		this.mediatorMap.mapView(example.views.AnalogClock, example.mediators.Clock);
+		this.mediatorMap.mapView(example.views.DigitalClock, example.mediators.Clock);
+		this.mediatorMap.mapView(example.views.Tools, example.mediators.Tools);
 		
 		// Singleton Models
-		injector.mapSingleton(models.Clock);
+		JSylum.injector.mapSingleton(example.models.Clock);
 		
 		// Adding views to the main view then start
-		commands.setupViews();
-		commands.startTimer();
+		example.commands.setupViews();
+		example.commands.startTimer();
 	}
 	
 });

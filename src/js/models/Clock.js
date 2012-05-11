@@ -5,7 +5,7 @@
  * @constructor
  */
  
-namespace.models.Clock = JSylum.Model.extend({
+example.models.Clock = JSylum.Model.extend({
 
 	init: function(){
 		this._super();

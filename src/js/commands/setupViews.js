@@ -1,10 +1,10 @@
 /**
  * Setups the initial views
  */
-namespace.commands.setupViews = function()
+example.commands.setupViews = function()
 {
-	commands.addDigitalClock();
-	commands.addAnalogClock();
+	example.commands.addDigitalClock();
+	example.commands.addAnalogClock();
 	
-	var tools = new views.Tools( document.getElementById("tools") );
+	var tools = new example.views.Tools( document.getElementById("tools") );
 }

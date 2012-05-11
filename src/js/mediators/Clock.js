@@ -5,12 +5,12 @@
  * @constructor
  */
  
-namespace.mediators.Clock = JSylum.Mediator.extend({
+example.mediators.Clock = JSylum.Mediator.extend({
 
 	init: function(view){
 		this._super(view);
 		
-		this.model = this.getSingleton(models.Clock);
+		this.model = this.getSingleton(example.models.Clock);
 		
 		this.addContextListener( 'timeChanged', this.onTimeChanged, this );
 		
@@ -20,7 +20,7 @@ namespace.mediators.Clock = JSylum.Mediator.extend({
 	},
 	
 	onTimeChanged: function( event ){
-		console.log('timeChanged mediator');
+		window.console.log('timeChanged mediator');
 		this.view.setTime( this.model.time );
 	},
 	

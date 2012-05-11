@@ -5,7 +5,7 @@
  * @constructor
  */
  
-namespace.views.AnalogClock = namespace.views.BaseClock.extend({
+example.views.AnalogClock = example.views.BaseClock.extend({
 
 	init: function(container){
 		this._super(container);

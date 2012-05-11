@@ -5,7 +5,7 @@
  * @constructor
  */
  
-namespace.views.BaseClock = JSylum.View.extend({
+example.views.BaseClock = JSylum.View.extend({
 
 	init: function(parent){
 		this._super(parent);

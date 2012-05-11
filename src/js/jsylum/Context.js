@@ -9,9 +9,9 @@
 JSylum.Context = JSylum.Base.extend({
 
 	init: function(){
-		injector = new Injector();
-		injector.mapSingleton( MediatorMap );
-		injector.mapSingleton( EventBus );
+		JSylum.injector = new Injector();
+		JSylum.injector.mapSingleton( MediatorMap );
+		JSylum.injector.mapSingleton( EventBus );
 		
 		this._super();
 	}

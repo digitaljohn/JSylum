@@ -5,8 +5,7 @@
  * @constructor
  */
  
- 
-namespace.views.Tools = JSylum.View.extend({
+example.views.Tools = JSylum.View.extend({
 
 	init: function(parent){
 		this._super(parent);

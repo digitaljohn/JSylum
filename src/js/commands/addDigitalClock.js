@@ -1,7 +1,7 @@
 /**
  * Add Clock
  */
-namespace.commands.addDigitalClock = function()
+example.commands.addDigitalClock = function()
 {
-	var clock = new views.DigitalClock( document.getElementById("coreView") );
+	var clock = new example.views.DigitalClock( document.getElementById("coreView") );
 }

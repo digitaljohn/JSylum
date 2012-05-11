@@ -13,7 +13,7 @@ JSylum.View = Class.extend({
 		
 		this.draw();
 		
-		injector.getSingleton( MediatorMap ).mediate(this);
+		JSylum.injector.getSingleton( MediatorMap ).mediate(this);
 	},
 	
 	draw: function(){

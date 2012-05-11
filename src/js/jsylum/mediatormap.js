@@ -17,7 +17,7 @@ var MediatorMap = function () {
 	{
 		var index = false;
 		
-		for(i in map)
+		for(var i in map)
 		{
 			if(map[i].view === view.constructor)
 			{

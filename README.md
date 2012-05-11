@@ -26,20 +26,46 @@ Run the **setup** task and enter your project's namespace when prompted:
 	ant setup
 	Enter the full project namespace for this project: com.domain.project
 
-This will refactor the project template to match your namespace. You'll then be given the option to *delete the GIT metadata* and disconnect from the Springboard repository...
+This will refactor the project template to match your namespace. You'll then be given the option to *delete the GIT metadata* and disconnect from the JSylum repository...
 
 ###Now Start Coding!
 
 Code is combined and compiled / minified using **blocks**. For example, the following block will compile the contained scripts into a single file (defined in [build.properties](https://github.com/digitaljohn/JSylum/blob/master/build.properties)) and compile using Closure Compiler. The build script will then replace this block with a reference to the compiled file.
 
 	<!--[BEGIN:JS:SRC]-->
-	<script src="js/plugins.js"></script>
-	<script src="js/namespace.js"></script>
-	<script src="js/namespace.Event.js"></script>
-	<script src="js/namespace.project.Controller.js"></script>
-	<script src="js/namespace.project.Model.js"></script>
-	<script src="js/namespace.project.View.js"></script>
-	<script src="js/namespace.project.App.js"></script>
+	<script src="js/constants/namespace.js"></script>
+		
+	<script src="js/jsylum/Class.js"></script>
+	<script src="js/jsylum/Base.js"></script>
+	
+	<script src="js/jsylum/EventBus.js"></script>
+	<script src="js/jsylum/Injector.js"></script>
+	<script src="js/jsylum/MediatorMap.js"></script>
+	
+	<script src="js/jsylum/Context.js"></script>
+	<script src="js/jsylum/Mediator.js"></script>
+	<script src="js/jsylum/View.js"></script>
+	<script src="js/jsylum/Model.js"></script>
+	
+	<script src="js/views/BaseClock.js"></script>
+	<script src="js/views/AnalogClock.js"></script>
+	<script src="js/views/DigitalClock.js"></script>
+	<script src="js/views/Tools.js"></script>
+	
+	<script src="js/mediators/Clock.js"></script>
+	<script src="js/mediators/Tools.js"></script>
+	
+	<script src="js/models/Clock.js"></script>
+	
+	<script src="js/commands/setupViews.js"></script>
+	<script src="js/commands/addDigitalClock.js"></script>
+	<script src="js/commands/addAnalogClock.js"></script>
+	<script src="js/commands/startTimer.js"></script>
+	<script src="js/commands/stopTimer.js"></script>
+	
+	<script src="js/Context.js"></script>
+	
+	<script src="js/app.js"></script>
 	<!--[END]-->
 
 Scripts and styles embedded outside of blocks will remain untouched to add flexibility, whilst all blocks of the same type in different pages will intelligently be compiled together.
@@ -50,7 +76,7 @@ Springboard uses [externs](http://code.google.com/closure/compiler/docs/api-tuto
 
 ###Building with ANT
 
-Aside from the **setup** task, the two main ANT tasks used by Springboard are **build** and **jsdoc**.
+Aside from the **setup** task, the two main ANT tasks used by JSylum are **build** and **jsdoc**.
 
 To compile your project, run **build**:
 

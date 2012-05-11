@@ -5,13 +5,13 @@
  * @constructor
  */
 
-JSylum = {};
+var JSylum = {};
  
 JSylum.Base = Class.extend({
 
 	init: function(){
-		this.mediatorMap = injector.getSingleton( MediatorMap );
-		this.eventBus = injector.getSingleton( EventBus );
+		this.mediatorMap = JSylum.injector.getSingleton( MediatorMap );
+		this.eventBus = JSylum.injector.getSingleton( EventBus );
 	},
 
 	addContextListener: function(type, listener, scope){
@@ -28,7 +28,7 @@ JSylum.Base = Class.extend({
 	},
 	
 	getSingleton: function(type){
-		return injector.getSingleton(type);
+		return JSylum.injector.getSingleton(type);
 	}
 	
 });

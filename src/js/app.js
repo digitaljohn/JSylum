@@ -5,7 +5,7 @@
 $(document).ready(function(){
 	
 	// Framework Setup
-	var context = new namespace.Context();
+	var context = new example.Context();
 	
 });
 
