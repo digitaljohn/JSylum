@@ -20,7 +20,7 @@ var p = View.prototype;
 
 		this.draw();
 
-		JSylum.injector.getSingleton( MediatorMap ).mediate(this);
+		window.injector.getSingleton( MediatorMap ).mediate(this);
 	}
 
 	p.draw = function() {

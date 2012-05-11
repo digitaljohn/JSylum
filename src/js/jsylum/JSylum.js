@@ -8,7 +8,7 @@
 (function(window) {
 
 var JSylum = function() {
-  this.initialize();
+  //this.initialize();
 }
 
 var p = JSylum.prototype;
@@ -16,12 +16,10 @@ var p = JSylum.prototype;
 	p._mediatorMap;
 	p._eventBus;
 
-	p.view;
-
 	//p.Base_initialize = p.initialize;
 	p.initialize = function() {
-		this._mediatorMap = JSylum.injector.getSingleton( MediatorMap );
-		this._eventBus = JSylum.injector.getSingleton( EventBus );
+		this._mediatorMap = window.injector.getSingleton( MediatorMap );
+		this._eventBus = window.injector.getSingleton( EventBus );
 	}
 
 	p.addContextListener = function(type, listener, scope){
@@ -38,7 +36,7 @@ var p = JSylum.prototype;
 	},
 	
 	p.getSingleton = function(type){
-		return JSylum.injector.getSingleton(type);
+		return window.injector.getSingleton(type);
 	}
 
 	

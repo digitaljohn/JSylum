@@ -16,9 +16,9 @@ var p = Context.prototype = new JSylum();
 	p.JSylum_initialize = p.initialize;
 	p.initialize = function(parent) {
 		// HMMM
-		JSylum.injector = new Injector();
-		JSylum.injector.mapSingleton( MediatorMap );
-		JSylum.injector.mapSingleton( EventBus );
+		window.injector = new Injector();
+		window.injector.mapSingleton( MediatorMap );
+		window.injector.mapSingleton( EventBus );
 
 		// DOwn here?
 		this.JSylum_initialize();

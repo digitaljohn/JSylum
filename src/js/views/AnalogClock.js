@@ -4,6 +4,52 @@
  * @param {*} view The jQuery DOM Element for the view
  * @constructor
  */
+
+// TODO NOT FINISHED!
+
+(function(window) {
+
+var AnalogClock = function() {
+  this.initialize();
+}
+
+var p = AnalogClock.prototype = new BaseClock();
+
+	p.parent;
+
+	p.BaseClock_initialize = p.initialize;
+	p.initialize = function(parent) {
+		p.BaseClock_initialize(parent);
+	}
+
+
+	p.BaseClock_draw = p.draw;
+	p.draw = function() {
+		this.domElement = document.createElement("canvas");
+		this.parent.appendChild( this.domElement );
+	
+		this.domElement.width = 100;
+		this.domElement.height = 100;
+	
+		this.ctx = this.domElement.getContext("2d");
+
+		p.BaseClock_draw();
+	}
+
+	p.destroy = function() {
+		this.parent.removeChild(this.closeButton);
+		
+		return this._super();
+	}
+
+window.AnalogClock = AnalogClock;
+}(window));
+
+
+
+
+
+
  
 example.views.AnalogClock = example.views.BaseClock.extend({
 

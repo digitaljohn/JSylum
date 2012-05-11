@@ -5,7 +5,7 @@
 $(document).ready(function(){
 	
 	// Framework Setup
-	var context = new example.Context();
+	var context = new ExampleContext();
 	
 });
 

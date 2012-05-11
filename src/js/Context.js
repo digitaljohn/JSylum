@@ -17,16 +17,16 @@ var p = ExampleContext.prototype = new JSylum();
 	p.initialize = function() {
 		this.Context_initialize();
 
-		this.eventBus.mapEvent('addDigitalClock', example.commands.addDigitalClock);
-		this.eventBus.mapEvent('addAnalogClock', example.commands.addAnalogClock);
+		this.eventBus.mapEvent('addDigitalClock', window.example.commands.addDigitalClock);
+		this.eventBus.mapEvent('addAnalogClock', window.example.commands.addAnalogClock);
 	
 		// View Mediators
-		this.mediatorMap.mapView(example.views.AnalogClock, example.mediators.Clock);
-		this.mediatorMap.mapView(example.views.DigitalClock, example.mediators.Clock);
-		this.mediatorMap.mapView(example.views.Tools, example.mediators.Tools);
+		this.mediatorMap.mapView(window.example.views.AnalogClock, window.example.mediators.Clock);
+		this.mediatorMap.mapView(window.example.views.DigitalClock, window.example.mediators.Clock);
+		this.mediatorMap.mapView(window.example.views.Tools, window.example.mediators.Tools);
 		
 		// Singleton Models
-		JSylum.injector.mapSingleton(example.models.Clock);
+		JSylum.injector.mapSingleton(window.example.models.Clock);
 		
 		// Adding views to the main view then start
 		example.commands.setupViews();

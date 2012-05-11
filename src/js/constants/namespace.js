@@ -1,35 +1,38 @@
 /**
  * @author DigitalJohn / http://www.rehabstudio.com/
  */
- 
- 
-/**
- * The root namespace
- * @const
- */
-var	example = {};
 
-/**
- * The views namespace
- * @const
- */
-example.views = {};
+(function(window) {
 
-/**
- * The mediators namespace
- * @const
- */
-example.mediators = {};
+	/**
+	 * The root namespace
+	 * @const
+	 */
+	window.example = {};
+
+	/**
+	 * The views namespace
+	 * @const
+	 */
+	window.example.views = {};
+
+	/**
+	 * The mediators namespace
+	 * @const
+	 */
+	window.example.mediators = {};
+
+	/**
+	 * The models namespace
+	 * @const
+	 */
+	window.example.models = {};
+
+	/**
+	 * The commands namespace
+	 * @const
+	 */
+	window.example.commands = {};
 
 
-/**
- * The models namespace
- * @const
- */
-example.models = {};
-
-/**
- * The commands namespace
- * @const
- */
-example.commands = {};
+}(window));
