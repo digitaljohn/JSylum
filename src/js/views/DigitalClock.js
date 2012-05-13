@@ -1,32 +1,37 @@
+(function(window) {
 
-/**
- * View component of the Model View Controller implementation
- * @param {*} view The jQuery DOM Element for the view
- * @constructor
- */
- 
-example.views.DigitalClock = example.views.BaseClock.extend({
+var DigitalClock = function(parent) {
+  if(window.launched) this.initialize(parent);
+}
 
-	init: function(parent){
-		this._super(parent);
-	},
-	
-	draw: function(){
-		this.domElement = document.createElement("h2");
-		this.parent.appendChild( this.domElement );
-		
-		this._super();
-	},
-	
-	setTime: function(time)
-	{
-		this.domElement.innerHTML = time;
-	},
-	
-	destroy: function(){
-		this.parent.removeChild(this.domElement);
-		
-		return this._super();
+var p = DigitalClock.prototype = new window.example.views.BaseClock();
+
+	p._domElement = null;
+
+	p.BaseClock_initialize = p.initialize;
+	p.initialize = function(parent) {
+		this.BaseClock_initialize(parent);
 	}
 	
-});
+	p.BaseClock_draw = p.draw;
+	p.draw = function(){
+		this._domElement = document.createElement("h2");
+		this._parent.appendChild( this._domElement );
+		
+		this.BaseClock_draw();
+	}
+	
+	p.setTime = function(time)
+	{
+		this._domElement.innerHTML = time;
+	}
+	
+	p.BaseClock_destroy = p.destroy;
+	p.destroy = function(){
+		this._parent.removeChild(this._domElement);
+		
+		this.BaseClock_destroy();
+	}
+
+window.example.views.DigitalClock = DigitalClock;
+}(window));

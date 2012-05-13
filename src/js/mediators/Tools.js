@@ -1,26 +1,26 @@
+(function(window) {
 
-/**
- * View component of the Model View Controller implementation
- * @param {*} view The jQuery DOM Element for the view
- * @constructor
- */
- 
- 
-example.mediators.Tools = JSylum.Mediator.extend({
+var Tools = function(view) {
+  if(window.launched) this.initialize(view);
+}
 
-	init: function(view){
-		this._super(view);
+var p = Tools.prototype = new window.Mediator();
+
+	p.Mediator_initialize = p.initialize;
+	p.initialize = function(view) {
+		this.Mediator_initialize(view);
 		
 		var self = this;
-		this.view.addDigitalButton.onclick = function()
+		this._view.addDigitalButton.onclick = function()
 		{
 			self.dispatch( { type: 'addDigitalClock' } );
 		}
 	
-		this.view.addAnalogButton.onclick = function()
+		this._view.addAnalogButton.onclick = function()
 		{
 			self.dispatch( { type: 'addAnalogClock' } );
 		}
 	}
-	
-});
+
+window.example.mediators.Tools = Tools;
+}(window));

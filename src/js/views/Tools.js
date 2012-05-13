@@ -1,33 +1,40 @@
+(function(window) {
 
-/**
- * View component of the Model View Controller implementation
- * @param {*} view The jQuery DOM Element for the view
- * @constructor
- */
- 
-example.views.Tools = JSylum.View.extend({
+var Tools = function(parent) {
+  this.tools = "TOOLSV";
+  if(window.launched) this.initialize(parent);
+}
 
-	init: function(parent){
-		this._super(parent);
-	},
+var p = Tools.prototype = new window.View();
+
+	p.addDigitalButton = null;
+	p.addAnalogButton = null;
+
+	p.View_initialize = p.initialize;
+	p.initialize = function(parent){
+		this.View_initialize(parent);
+	}
 	
-	draw: function(){
+	p.View_draw = p.draw;
+	p.draw = function(){
 		this.addDigitalButton = document.createElement("button");
 		this.addDigitalButton.innerHTML = "Digital";
-		this.parent.appendChild( this.addDigitalButton );
+		this._parent.appendChild( this.addDigitalButton );
 		
 		this.addAnalogButton = document.createElement("button");
 		this.addAnalogButton.innerHTML = "Analog";
-		this.parent.appendChild( this.addAnalogButton );
+		this._parent.appendChild( this.addAnalogButton );
 		
-		this._super();
-	},
-	
-	destroy: function(){
-		this.parent.removeChild(this.addDigitalButton);
-		this.parent.removeChild(this.addAnalogButton);
-		
-		return this._super();
+		this.View_draw();
 	}
 	
-});
+	p.View_destroy = p.destroy;
+	p.destroy = function(){
+		this._parent.removeChild(this.addDigitalButton);
+		this._parent.removeChild(this.addAnalogButton);
+		
+		this.View_destroy();
+	}
+
+window.example.views.Tools = Tools;
+}(window));

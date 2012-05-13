@@ -7,61 +7,35 @@
 
 (function(window) {
 
-var BaseClock = function() {
-  this.initialize();
+var BaseClock = function(parent) {
+  if(window.launched) this.initialize(parent);
 }
 
-var p = BaseClock.prototype = new View();
+var p = BaseClock.prototype = new window.View();
 
-	p.parent;
+	p.closeButton = null;
 
 	p.View_initialize = p.initialize;
 	p.initialize = function(parent) {
-		p.View_initialize(parent);
+		this.View_initialize(parent);
 	}
 
+	p.View_draw = p.draw;
 	p.draw = function() {
+		this.View_draw();
+
 		// Close Button
 		this.closeButton = document.createElement("button");
 		this.closeButton.innerHTML = "X";
-		this.parent.appendChild( this.closeButton );
-		
-		this._super();
+		this._parent.appendChild( this.closeButton );
 	}
 
+	p.View_destroy = p.destroy;
 	p.destroy = function() {
-		this.parent.removeChild(this.closeButton);
-		
-		return this._super();
+		this._parent.removeChild(this.closeButton);
+
+		this.View_destroy();
 	}
 
-window.BaseClock = BaseClock;
+window.example.views.BaseClock = BaseClock;
 }(window));
-
-/*
- 
-example.views.BaseClock = JSylum.View.extend({
-
-	init: function(parent){
-		this._super(parent);
-	},
-	
-	draw: function(){
-		// Close Button
-		this.closeButton = document.createElement("button");
-		this.closeButton.innerHTML = "X";
-		this.parent.appendChild( this.closeButton );
-		
-		this._super();
-	},
-	
-	destroy: function(){
-		this.parent.removeChild(this.closeButton);
-		
-		return this._super();
-		
-	}
-	
-});
-
-*/

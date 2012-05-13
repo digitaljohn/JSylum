@@ -1,14 +1,14 @@
+(function(window) {
 
-/**
- * Model component of the Model View Controller implementation
- * @param {Object=} data Initial data for the model
- * @constructor
- */
- 
-example.models.Clock = JSylum.Model.extend({
+var Clock = function() {
+  if(window.launched) this.initialize();
+}
 
-	init: function(){
-		this._super();
+var p = Clock.prototype = new window.Model();
+
+	p.Model_initialize = p.initialize;
+	p.initialize = function(){
+		this.Model_initialize();
 		
 		this.time = new Date();
 		this.ticker = 0;
@@ -17,17 +17,18 @@ example.models.Clock = JSylum.Model.extend({
 		
 	},
 	
-	getTime: function(){
+	p.getTime = function(){
 		return this.time;
 	},
 	
-	setTime: function( time ){
+	p.setTime = function( time ){
 		this.time = time;
 		this.dispatch( { type: 'timeChanged', time: this.time } );
 	},
 	
-	onTick: function(event){
+	p.onTick = function(event){
 		this.setTime( new Date() );
 	}
-	
-});
+
+window.example.models.Clock = Clock;
+}(window));

@@ -1,11 +1,7 @@
-/**
- * Generic onReady function called from all pages.
- */
-
 $(document).ready(function(){
-	
+
 	// Framework Setup
-	var context = new ExampleContext();
+	var context = new window.ExampleContext();
 	
 });
 

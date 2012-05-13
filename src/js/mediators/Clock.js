@@ -1,33 +1,37 @@
+(function(window) {
 
-/**
- * View component of the Model View Controller implementation
- * @param {*} view The jQuery DOM Element for the view
- * @constructor
- */
- 
-example.mediators.Clock = JSylum.Mediator.extend({
+var Clock = function(view) {
+  if(window.launched) this.initialize(view);
+}
 
-	init: function(view){
-		this._super(view);
+var p = Clock.prototype = new window.Mediator();
+
+	p._model = null;
+
+	p.Mediator_initialize = p.initialize;
+	p.initialize = function(view) {
+		this.Mediator_initialize(view);
 		
-		this.model = this.getSingleton(example.models.Clock);
+		this.model = window.injector.getSingleton(window.example.models.Clock);
 		
 		this.addContextListener( 'timeChanged', this.onTimeChanged, this );
 		
-		this.view.closeButton.onclick = this.destroy.bind(this);
+		this._view.closeButton.onclick = this.destroy.bind(this);
 		
 		this.onTimeChanged();
-	},
-	
-	onTimeChanged: function( event ){
-		window.console.log('timeChanged mediator');
-		this.view.setTime( this.model.time );
-	},
-	
-	destroy: function(){
-		this.removeContextListener( 'timeChanged', this.onTimeChanged, this );
-		
-		return this._super();
 	}
 	
-});
+	p.onTimeChanged = function( event ) {
+		window.console.log('timeChanged mediator');
+		this._view.setTime( this.model.time );
+	}
+	
+	p.Mediator_destroy = p.destroy;
+	p.destroy = function() {
+		this.removeContextListener( 'timeChanged', this.onTimeChanged, this );
+		
+		this.Mediator_destroy();
+	}
+
+window.example.mediators.Clock = Clock;
+}(window));
