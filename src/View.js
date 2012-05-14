@@ -48,7 +48,7 @@ var p = View.prototype;
 	 **/
 	p._parent = null;
 
-	/**
+	/** 
 	 * Initialization method.
 	 *
 	 * @protected

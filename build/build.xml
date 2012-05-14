@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="JSylum build" basedir="." default="build">
+
+	<property name="compressor.dir" value="lib/yuicompressor-2.4.7.jar"/>
+	<property name="antcontrib.dir" value="lib/ant-contrib.jar"/>
+  <property name="jsdoc.dir" value="lib/jsdoc"/>
+
+	<property name="src.dir" value="${basedir}/../src"/>
+	<property name="dist.dir" value="${basedir}/../dist"/>
+  <property name="docs.dir" value="${basedir}/../docs"/>
+  
+  
+
+
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="${antcontrib.dir}"/>
+		</classpath>
+	</taskdef>
+
+	<property name="dist.merged.file.js" value="${dist.dir}/jsylum.mvc.js"/>
+
+	<!-- Merges all javascript files into one. Remember, order matters! -->
+	<target name="merge-global-js">
+		<echo>Merge Files</echo>
+    <concat destfile="${dist.merged.file.js}" fixlastline="yes" append="no">
+			<filelist dir="${src.dir}" files="
+          injector.js
+          eventbus.js
+          mediatormap.js
+          JSylum.js
+          Context.js
+          Mediator.js
+          View.js          
+          Model.js
+          Service.js
+			"/>
+		</concat>
+	</target>
+
+
+	<!-- Comment out console.log commands from merged script -->
+	<target name="clean-merged-js" depends="merge-global-js" description="Comment out console.log lines">
+		<echo>Commenting out console.log lines</echo>
+		<replaceregexp file="${dist.merged.file.js}" match="(console.log\(.*\))" replace="/\*\1\*/" flags="g" />
+	</target>
+
+
+	<!-- Compress the merged common javascript file -->
+	<target name="compress-global-js" depends="clean-merged-js">
+		<echo>Compressing to ${dist.merged.file.js}</echo>
+		<java jar="${compressor.dir}" fork="true">
+			<arg value="${dist.merged.file.js}"/>
+      <arg value="--nomunge"/>
+			<arg value="-o"/>
+			<arg value="${dist.merged.file.js}"/>
+		</java>
+  </target>
+
+
+	<target name="clean-js">
+      <echo>Cleaning Directories</echo>
+      <delete dir="${dist.dir}" />
+      <mkdir dir="${dist.dir}" />
+	</target>
+
+	<!-- run all tasks -->
+	<target name="build" depends="clean-js, compress-global-js">
+    </target>
+
+
+
+
+  <!--
+  
+    Generates documentation using JSDoc
+    
+  -->
+  <target name="jsdocs">
+    
+    <echo>Generating Documentation using JSDoc Toolkit 2.4.0...
+    </echo>
+    
+    <delete dir="${docs.dir}"/>
+    <mkdir dir="${docs.dir}"/>
+    
+    <exec executable="java" failonerror="false">
+      <arg line="-jar ${jsdoc.dir}/jsrun.jar ${jsdoc.dir}/app/run.js" />
+      <arg line="-t=${jsdoc.dir}/templates/jsdoc" />
+      <arg line="-d=${docs.dir}" />
+      <arg line="${src.dir}/" />
+      <arg line="-a" />
+    </exec>
+    
+    <!-- Pre-release JSDoc 3 setup: https://github.com/micmath/jsdoc/
+    
+    <exec executable="java" failonerror="true">
+      <arg line="-jar ${JSDOC}/jsdoc.jar" />
+      <arg line="${SRC_DIR}/${JS_DIR}/" />
+      <arg line="-d ${basedir}/${DOCS_DIR}" />
+      <arg line="-r" />
+    </exec>
+    
+    -->
+    
+  </target>
+
+
+  <!-- run all tasks -->
+  <target name="docs" depends="jsdocs">
+    </target>
+
+</project>

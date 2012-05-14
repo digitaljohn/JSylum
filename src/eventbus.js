@@ -41,7 +41,7 @@ var EventBus = function() {
 var p = EventBus.prototype;
 
     /**
-     * @property _listeners
+     * @property _mediatorMap
      * @protected
      * @type {!Object}
      * @default {}
