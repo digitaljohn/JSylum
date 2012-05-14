@@ -1,7 +1,6 @@
 (function(window) {
 
 var Tools = function(parent) {
-  this.tools = "TOOLSV";
   if(window.launched) this.initialize(parent);
 }
 
