@@ -37,10 +37,10 @@
 * @constructor
 **/
 var Mediator = function(view) {
-  if(window.launched) this.initialize(view);
+  if(window._initable) this.initialize(view);
 }
 
-var p = Mediator.prototype = new window.JSylum();
+var p = Mediator.prototype = new JSylum();
 
 	/**
 	 * @property _view

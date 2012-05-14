@@ -35,7 +35,7 @@
 * @constructor
 **/
 var View = function(parent) {
-  if(window.launched) this.initialize(parent);
+  if(window._initable) this.initialize(parent);
 }
 
 var p = View.prototype;
@@ -48,6 +48,22 @@ var p = View.prototype;
 	 **/
 	p._parent = null;
 
+	/**
+	 * @property _el
+	 * @protected
+	 * type DOM Element
+	 * @default null
+	 **/
+	p._el = null;
+
+	/**
+	 * @property _elType
+	 * @protected
+	 * type DOM Element
+	 * @default "div"
+	 **/
+	p._elType = "div";
+
 	/** 
 	 * Initialization method.
 	 *
@@ -58,7 +74,7 @@ var p = View.prototype;
 
 		this.draw();
 
-		window.injector.getSingleton( window.MediatorMap ).mediate(this);
+		injector.getSingleton( MediatorMap ).mediate(this);
 	}
 
 	/** 
@@ -67,7 +83,9 @@ var p = View.prototype;
 	 * @protected
 	 **/
 	p.draw = function() {
-
+		console.log("HMMM");
+		this._el = document.createElement( this._elType );
+		this._parent.appendChild( this._el );
 	}
 
 	/** 
@@ -85,7 +103,7 @@ var p = View.prototype;
 	 * @protected
 	 **/
 	p.destroy = function() {
-
+		this._parent.removeChild(this._el);
 	}
 
 window.View = View;

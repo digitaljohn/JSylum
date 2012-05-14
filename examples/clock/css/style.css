@@ -10,22 +10,71 @@ h1 {
 	margin: 12px 0;
 }
 
-h2 {
-	font-size: 14px;
-	font-style : italic;
-}
-
-#coreView {
+#tools {
+	width: 400px;
 	font-family: Courier, "Courier New", monospace;
-	border: 1px solid #CCC;
-	background-color: #FFF;
+	border: 10px solid #CCC;
+	text-align: center;
+	background-color: #CCC;
 
 	font-size: 16px;
-	margin: 28px 0;
+	margin: 40px 0 0 0;
+	padding: 20px;
+}
+
+#tools button {
+	font-family: Courier, "Courier New", monospace;
+	font-weight: bold;
+	font-size: 14px;
+	background-color: #fff;
+	border: none;
+	color: #555;
 	padding: 8px;
+	margin-right: 10px;
+}
+
+#clocks {
+	width: 400px;
+	font-family: Courier, "Courier New", monospace;
+	border: 10px solid #CCC;
+	background-color: #FFF;
+	font-size: 16px;
+	margin: 0 0 20px 0;
+	padding: 0 20px 0 20px;
+}
+
+#clocks li {
+	border-bottom: 5px dashed #E9E9E9;
+	padding: 20px 0 20px 0;
+	float: left/right/none;
+}
+
+#clocks li button {
+	float: right;
+
+	font-family: Courier, "Courier New", monospace;
+	font-weight: bold;
+	font-size: 24px;
+	background-color: #ff0000;
+	border: none;
+	color: #fff;
+	padding: 8px;
+}
+
+#clocks li h2 {
+	font-size: 48px;
+	color: #555;
+}
+
+#clocks li:last-child {
+	border-bottom: none;
 }
 
 .view-clock
 {
 	background-color: #ccc;
+}
+
+.awesome{
+
 }

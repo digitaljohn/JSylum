@@ -1,11 +1,10 @@
 (function(window) {
 
 var Tools = function(parent) {
-  this.tools = "TOOLSV";
-  if(window.launched) this.initialize(parent);
+  if(window._initable) this.initialize(parent);
 }
 
-var p = Tools.prototype = new window.View();
+var p = Tools.prototype = new View();
 
 	p.addDigitalButton = null;
 	p.addAnalogButton = null;
@@ -17,23 +16,15 @@ var p = Tools.prototype = new window.View();
 	
 	p.View_draw = p.draw;
 	p.draw = function(){
+		this.View_draw();
+
 		this.addDigitalButton = document.createElement("button");
-		this.addDigitalButton.innerHTML = "Digital";
-		this._parent.appendChild( this.addDigitalButton );
+		this.addDigitalButton.innerHTML = "Add Digital Clock";
+		this._el.appendChild( this.addDigitalButton );
 		
 		this.addAnalogButton = document.createElement("button");
-		this.addAnalogButton.innerHTML = "Analog";
-		this._parent.appendChild( this.addAnalogButton );
-		
-		this.View_draw();
-	}
-	
-	p.View_destroy = p.destroy;
-	p.destroy = function(){
-		this._parent.removeChild(this.addDigitalButton);
-		this._parent.removeChild(this.addAnalogButton);
-		
-		this.View_destroy();
+		this.addAnalogButton.innerHTML = "Add Analog Clock";
+		this._el.appendChild( this.addAnalogButton );
 	}
 
 window.example.views.Tools = Tools;

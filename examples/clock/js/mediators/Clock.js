@@ -1,10 +1,10 @@
 (function(window) {
 
 var Clock = function(view) {
-  if(window.launched) this.initialize(view);
+  if(window._initable) this.initialize(view);
 }
 
-var p = Clock.prototype = new window.Mediator();
+var p = Clock.prototype = new Mediator();
 
 	p._model = null;
 
@@ -12,7 +12,7 @@ var p = Clock.prototype = new window.Mediator();
 	p.initialize = function(view) {
 		this.Mediator_initialize(view);
 		
-		this.model = window.injector.getSingleton(window.example.models.Clock);
+		this.model = injector.getSingleton(example.models.Clock);
 		
 		this.addContextListener( 'timeChanged', this.onTimeChanged, this );
 		
@@ -22,14 +22,13 @@ var p = Clock.prototype = new window.Mediator();
 	}
 	
 	p.onTimeChanged = function( event ) {
-		window.console.log('timeChanged mediator');
+		console.log('timeChanged mediator');
 		this._view.setTime( this.model.time );
 	}
 	
 	p.Mediator_destroy = p.destroy;
 	p.destroy = function() {
 		this.removeContextListener( 'timeChanged', this.onTimeChanged, this );
-		
 		this.Mediator_destroy();
 	}
 

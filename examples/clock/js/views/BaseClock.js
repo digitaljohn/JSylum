@@ -1,17 +1,12 @@
-
-/**
- * View component of the Model View Controller implementation
- * @param {*} view The jQuery DOM Element for the view
- * @constructor
- */
-
 (function(window) {
 
 var BaseClock = function(parent) {
-  if(window.launched) this.initialize(parent);
+  if(window._initable) this.initialize(parent);
 }
 
-var p = BaseClock.prototype = new window.View();
+var p = BaseClock.prototype = new View();
+
+	p._elType = "li";
 
 	p.closeButton = null;
 
@@ -27,14 +22,7 @@ var p = BaseClock.prototype = new window.View();
 		// Close Button
 		this.closeButton = document.createElement("button");
 		this.closeButton.innerHTML = "X";
-		this._parent.appendChild( this.closeButton );
-	}
-
-	p.View_destroy = p.destroy;
-	p.destroy = function() {
-		this._parent.removeChild(this.closeButton);
-
-		this.View_destroy();
+		this._el.appendChild( this.closeButton );
 	}
 
 window.example.views.BaseClock = BaseClock;

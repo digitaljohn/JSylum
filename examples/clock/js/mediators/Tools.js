@@ -1,10 +1,10 @@
 (function(window) {
 
 var Tools = function(view) {
-  if(window.launched) this.initialize(view);
+  if(window._initable) this.initialize(view);
 }
 
-var p = Tools.prototype = new window.Mediator();
+var p = Tools.prototype = new Mediator();
 
 	p.Mediator_initialize = p.initialize;
 	p.initialize = function(view) {

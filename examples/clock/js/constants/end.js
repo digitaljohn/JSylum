@@ -4,6 +4,7 @@
 
 (function(window) {
 
-	window.launched = true;
+	// Blocks any initialize functions from running so we can safely extend classes.
+	window._initable = true;
 
 }(window));

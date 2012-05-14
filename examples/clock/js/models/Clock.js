@@ -1,10 +1,10 @@
 (function(window) {
 
 var Clock = function() {
-  if(window.launched) this.initialize();
+  if(window._initable) this.initialize();
 }
 
-var p = Clock.prototype = new window.Model();
+var p = Clock.prototype = new Model();
 
 	p.Model_initialize = p.initialize;
 	p.initialize = function(){

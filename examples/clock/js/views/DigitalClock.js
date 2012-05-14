@@ -1,10 +1,10 @@
 (function(window) {
 
 var DigitalClock = function(parent) {
-  if(window.launched) this.initialize(parent);
+  if(window._initable) this.initialize(parent);
 }
 
-var p = DigitalClock.prototype = new window.example.views.BaseClock();
+var p = DigitalClock.prototype = new example.views.BaseClock();
 
 	p._domElement = null;
 
@@ -15,22 +15,27 @@ var p = DigitalClock.prototype = new window.example.views.BaseClock();
 	
 	p.BaseClock_draw = p.draw;
 	p.draw = function(){
-		this._domElement = document.createElement("h2");
-		this._parent.appendChild( this._domElement );
-		
 		this.BaseClock_draw();
+
+		this._domElement = document.createElement("h2");
+		this._el.appendChild( this._domElement );
 	}
 	
 	p.setTime = function(time)
 	{
-		this._domElement.innerHTML = time;
+		var h = this._padNumber( time.getHours() );
+		var m = this._padNumber( time.getMinutes() );
+		var s = this._padNumber( time.getSeconds() );
+
+		this._domElement.innerHTML = h + ":" + m + ":" + s;
 	}
-	
-	p.BaseClock_destroy = p.destroy;
-	p.destroy = function(){
-		this._parent.removeChild(this._domElement);
-		
-		this.BaseClock_destroy();
+
+	p._padNumber = function(n)
+	{
+		if(n<1) return "00";
+		if(n<10) return "0"+n;
+
+		return n;
 	}
 
 window.example.views.DigitalClock = DigitalClock;

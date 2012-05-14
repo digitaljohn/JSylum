@@ -37,10 +37,10 @@
 * @constructor
 **/
 var Model = function() {
-  if(window.launched) this.initialize();
+  if(window._initable) this.initialize();
 }
 
-var p = Model.prototype = new window.JSylum();
+var p = Model.prototype = new JSylum();
 
 	/**
 	 * @property JSylum_initialize

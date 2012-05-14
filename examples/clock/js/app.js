@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 	// Framework Setup
-	var context = new window.ExampleContext();
+	var context = new ExampleContext();
 	
 });
 

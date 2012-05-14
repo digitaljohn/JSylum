@@ -35,7 +35,7 @@
 * @constructor
 **/
 var JSylum = function() {
-  if(window.launched) this.initialize();
+  if(window._initable) this.initialize();
 }
 
 var p = JSylum.prototype;
@@ -62,8 +62,8 @@ var p = JSylum.prototype;
 	 * @protected
 	 **/
 	p.initialize = function() {
-		this._mediatorMap = window.injector.getSingleton( window.MediatorMap );
-		this._eventBus = window.injector.getSingleton( window.EventBus );
+		this._mediatorMap = injector.getSingleton( MediatorMap );
+		this._eventBus = injector.getSingleton( EventBus );
 	}
 
 	/**
@@ -108,7 +108,7 @@ var p = JSylum.prototype;
 	 * @return {!Object} The shared instance that was requested.
 	 **/
 	p.getSingleton = function(type){
-		return window.injector.getSingleton(type);
+		return injector.getSingleton(type);
 	}
 
 window.JSylum = JSylum;

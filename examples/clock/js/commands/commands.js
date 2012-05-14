@@ -1,41 +1,44 @@
 (function(window) {
 
-	window.example.commands.setup = function()
+	var c = {};
+
+	c.setup = function()
 	{
-		window.example.commands.setupViews();
-		window.example.commands.startTimer();
+		example.commands.setupViews();
+		example.commands.startTimer();
 	}
 
-	window.example.commands.setupViews = function()
+	c.setupViews = function()
 	{
-		window.example.commands.addDigitalClock();
-		window.example.commands.addAnalogClock();
+		example.commands.addAnalogClock();
+		example.commands.addDigitalClock();
 		
-		var tools = new window.example.views.Tools( document.getElementById("tools") );
+		var tools = new example.views.Tools( document.getElementById("tools") );
 	}
 
-	window.example.commands.addDigitalClock = function() {
-		var clock = new window.example.views.DigitalClock( document.getElementById("coreView") );
+	c.addDigitalClock = function() {
+		var clock = new example.views.DigitalClock( document.getElementById("clocks") );
 	}
 
-	window.example.commands.addAnalogClock = function() {
-		var clock = new window.example.views.AnalogClock( document.getElementById("coreView") );
+	c.addAnalogClock = function() {
+		var clock = new example.views.AnalogClock( document.getElementById("clocks") );
 	}
 
-	window.example.commands.startTimer = function() {
-		var eventBus = window.injector.getSingleton( window.EventBus );
+	c.startTimer = function() {
+		var eventBus = injector.getSingleton( EventBus );
 		
 		var tick = function() {
 			eventBus.dispatchEvent( { type: 'tick' } );
 		}
 		
-		var model = window.injector.getSingleton(window.example.models.Clock);
+		var model = injector.getSingleton(example.models.Clock);
 		model.ticker = setInterval( tick, 1000 );
 	}
 
-	window.example.commands.stopTimer = function() {
-		var model = window.injector.getSingleton(window.example.models.Clock);
+	c.stopTimer = function() {
+		var model = injector.getSingleton(example.models.Clock);
 		clearInterval( model.ticker );
 	}
 
+window.example.commands = c;
 }(window));

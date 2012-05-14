@@ -36,10 +36,10 @@
 * @constructor
 **/
 var Context = function() {
-  if(window.launched) this.initialize();
+  if(window._initable) this.initialize();
 }
 
-var p = Context.prototype = new window.JSylum();
+var p = Context.prototype = new JSylum();
 
 	/**
 	 * @property JSylum_initialize
@@ -54,9 +54,9 @@ var p = Context.prototype = new window.JSylum();
 	 * @protected
 	 **/
 	p.initialize = function() {
-		window.injector = new window.Injector();
-		window.injector.mapSingleton( window.MediatorMap );
-		window.injector.mapSingleton( window.EventBus );
+		window.injector = new Injector();
+		window.injector.mapSingleton( MediatorMap );
+		window.injector.mapSingleton( EventBus );
 
 		this.JSylum_initialize();
 	}

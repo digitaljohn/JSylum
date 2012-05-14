@@ -4,6 +4,7 @@
 
 (function(window) {
 
-	window.launched = false;
+	// Allows initialize functions to run after extending classes.
+	window._initable = false;
 
 }(window));
