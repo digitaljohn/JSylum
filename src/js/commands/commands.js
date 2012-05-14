@@ -1,5 +1,11 @@
 (function(window) {
 
+	window.example.commands.setup = function()
+	{
+		window.example.commands.setupViews();
+		window.example.commands.startTimer();
+	}
+
 	window.example.commands.setupViews = function()
 	{
 		window.example.commands.addDigitalClock();

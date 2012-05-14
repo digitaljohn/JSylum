@@ -11,8 +11,6 @@ var ExampleContext = function() {
 
 var p = ExampleContext.prototype = new window.Context();
 
-	//p.view;
-
 	p.Context_initialize = p.initialize;
 	p.initialize = function() {
 		window.console.log("ExampleContext::initialize");
@@ -30,39 +28,9 @@ var p = ExampleContext.prototype = new window.Context();
 		// Singleton Models
 		window.injector.mapSingleton(window.example.models.Clock);
 		
-		// Adding views to the main view then start
-		window.example.commands.setupViews();
-		window.example.commands.startTimer();
+		// Run the setup command
+		window.example.commands.setup();
 	}
 
 window.ExampleContext = ExampleContext;
 }(window));
-
-
-/*
-
-example.Context = JSylum.Context.extend({
-
-	init: function(){
-		this._super();
-		
-		// Command Map
-		this.eventBus.mapEvent('addDigitalClock', example.commands.addDigitalClock);
-		this.eventBus.mapEvent('addAnalogClock', example.commands.addAnalogClock);
-	
-		// View Mediators
-		this.mediatorMap.mapView(example.views.AnalogClock, example.mediators.Clock);
-		this.mediatorMap.mapView(example.views.DigitalClock, example.mediators.Clock);
-		this.mediatorMap.mapView(example.views.Tools, example.mediators.Tools);
-		
-		// Singleton Models
-		JSylum.injector.mapSingleton(example.models.Clock);
-		
-		// Adding views to the main view then start
-		example.commands.setupViews();
-		example.commands.startTimer();
-	}
-	
-});
-
-*/
