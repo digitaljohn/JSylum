@@ -25,13 +25,13 @@
 		<echo>Merge Files</echo>
     <concat destfile="${dist.merged.file.js}" fixlastline="yes" append="no">
 			<filelist dir="${src.dir}" files="
-          injector.js
-          eventbus.js
-          mediatormap.js
+          Injector.js
+          EventBus.js
+          MediatorMap.js
           JSylum.js
           Context.js
           Mediator.js
-          View.js          
+          View.js
           Model.js
           Service.js
 			"/>
@@ -66,48 +66,6 @@
 
 	<!-- run all tasks -->
 	<target name="build" depends="clean-js, compress-global-js">
-    </target>
-
-
-
-
-  <!--
-  
-    Generates documentation using JSDoc
-    
-  -->
-  <target name="jsdocs">
-    
-    <echo>Generating Documentation using JSDoc Toolkit 2.4.0...
-    </echo>
-    
-    <delete dir="${docs.dir}"/>
-    <mkdir dir="${docs.dir}"/>
-    
-    <exec executable="java" failonerror="false">
-      <arg line="-jar ${jsdoc.dir}/jsrun.jar ${jsdoc.dir}/app/run.js" />
-      <arg line="-t=${jsdoc.dir}/templates/jsdoc" />
-      <arg line="-d=${docs.dir}" />
-      <arg line="${src.dir}/" />
-      <arg line="-a" />
-    </exec>
-    
-    <!-- Pre-release JSDoc 3 setup: https://github.com/micmath/jsdoc/
-    
-    <exec executable="java" failonerror="true">
-      <arg line="-jar ${JSDOC}/jsdoc.jar" />
-      <arg line="${SRC_DIR}/${JS_DIR}/" />
-      <arg line="-d ${basedir}/${DOCS_DIR}" />
-      <arg line="-r" />
-    </exec>
-    
-    -->
-    
   </target>
-
-
-  <!-- run all tasks -->
-  <target name="docs" depends="jsdocs">
-    </target>
 
 </project>
