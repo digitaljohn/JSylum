@@ -1,5 +1,5 @@
 /*
-* Context
+* Service
 * Visit http://jsylum.digitaljohn.co.uk/ for documentation, updates and examples.
 *
 * Copyright (c) 2012 DigitalJohn.
@@ -29,38 +29,20 @@
 (function(window) {
 
 /**
-* A Context is the class that configured and starts your application.
+* A Mediator takes care of complex reactive application logic before a view is asked
+* to do anything. A view should only do display related tasks and no application logic.
 *
-* @class Context
+* @class Service
 * extends JSylum
 * @constructor
 **/
-var Context = function() {
-  this.initialize();
+var Service = function(view) {
+  this.initialize(view);
 }
 
-var p = Context.prototype = new JSylum();
+var p = Service.prototype = new JSylum();
 
-	/**
-	 * @property JSylum_initialize
-	 * @type Function
-	 * @private
-	 **/
-	p.JSylum_initialize = p.initialize;
 
-	/** 
-	 * Initialization method.
-	 *
-	 * @protected
-	 **/
-	p.initialize = function() {
-		window._initable = true;
-		window.injector = new Injector();
-		window.injector.mapSingleton( MediatorMap );
-		window.injector.mapSingleton( EventBus );
 
-		this.JSylum_initialize();
-	}
-
-window.Context = Context;
+window.Service = Service;
 }(window));

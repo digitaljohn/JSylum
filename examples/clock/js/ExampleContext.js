@@ -6,7 +6,7 @@
 (function(window) {
 
 var ExampleContext = function() {
-  if(window._initable) this.initialize();
+	this.initialize();
 }
 
 var p = ExampleContext.prototype = new window.Context();
