@@ -24,6 +24,8 @@ var p = Clock.prototype = new Mediator();
 		
 		// Run onTimeChanged so the clock shows the correct time and does not need to wait for the next time change
 		this.onTimeChanged();
+
+		this.dispatch( { type: 'clockAdded' } );
 	}
 	
 	p.onTimeChanged = function( event ) {
@@ -37,6 +39,8 @@ var p = Clock.prototype = new Mediator();
 	p.destroy = function() {
 		// CLean up events
 		this.removeContextListener( 'timeChanged', this.onTimeChanged, this );
+
+		this.dispatch( { type: 'clockRemoved' } );
 
 		// Make sure the super class cleans up also
 		this.Mediator_destroy();

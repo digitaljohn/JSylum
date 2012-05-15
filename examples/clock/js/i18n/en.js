@@ -16,7 +16,10 @@
 		"add_analog"		: "Add Analog Clock",
 
 		// The format to show the date in
-		"digital_format"	: "%1:%2:%3"
+		"digital_format"	: "%1:%2:%3",
+
+		// The status text
+		"status"			: "There are currently %1 clocks."
 
 	}
 

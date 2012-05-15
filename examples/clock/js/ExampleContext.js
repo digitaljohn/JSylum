@@ -18,6 +18,7 @@ var p = ExampleContext.prototype = new window.Context();
 		this._mediatorMap.mapView(example.views.AnalogClock, example.mediators.Clock);
 		this._mediatorMap.mapView(example.views.DigitalClock, example.mediators.Clock);
 		this._mediatorMap.mapView(example.views.Tools, example.mediators.Tools);
+		this._mediatorMap.mapView(example.views.Status, example.mediators.Status);
 		
 		// Define any Singleton instances
 		injector.mapSingleton(example.models.Clock);

@@ -10,6 +10,8 @@ var p = Clock.prototype = new Model();
 	
 	p.ticker = null;
 
+	p._clockNum = 0;
+
 	p.Model_initialize = p.initialize;
 	p.initialize = function(){
 		this.Model_initialize();
@@ -19,6 +21,10 @@ var p = Clock.prototype = new Model();
 		
 		// Listen for clock ticks
 		this.addContextListener( 'tick', this.onTick, this);
+
+		// Listen for clocks being added and removed
+		this.addContextListener( 'clockAdded', this.onClockAdded, this);
+		this.addContextListener( 'clockRemoved', this.onClockRemoved, this);
 	},
 	
 	p.getTime = function(){
@@ -37,6 +43,16 @@ var p = Clock.prototype = new Model();
 	p.onTick = function(event){
 		// Set the time to a new date
 		this.setTime( new Date() );
+	}
+
+	p.onClockAdded = function(event){
+		this._clockNum++;
+		this.dispatch( { type: 'clockNumChanged', num: this._clockNum } );
+	}
+
+	p.onClockRemoved = function(event){
+		this._clockNum--;
+		this.dispatch( { type: 'clockNumChanged', num: this._clockNum } );
 	}
 
 window.example.models.Clock = Clock;

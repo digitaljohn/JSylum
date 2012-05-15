@@ -19,6 +19,9 @@
 		// Create the Tools View pass in a reference to where it should be placed
 		var tools = new example.views.Tools( document.getElementById("tools") );
 
+		// Create the Status View pass in a reference to where it should be placed
+		var status = new example.views.Status( document.getElementById("status") );
+
 		// Create two clocks
 		example.commands.addAnalogClock();
 		example.commands.addDigitalClock();
