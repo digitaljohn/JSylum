@@ -28,13 +28,27 @@ var p = AnalogClock.prototype = new example.views.BaseClock();
 	}
 
 	p.BaseClock_redraw = p.redraw;
+	
+	
 	p.redraw = function(){
 		this.BaseClock_redraw();
-
-		var to = (Math.PI*1.5);
-		var from = this.value * (Math.PI*2);
-		from += to;
-	
+		
+		//var hours = this.value.getHours() ;
+		
+		
+		var toSeconds = (Math.PI*1.5);
+		var fromSeconds = (this.value.getSeconds() / 60) * (Math.PI*2);
+		fromSeconds += toSeconds;
+		
+		var toMins = (Math.PI*1.5);
+		var fromMins = (this.value.getMinutes() / 60) * (Math.PI*2)
+		fromMins += toMins;
+		console.log(fromMins)
+		
+		var toHours = (Math.PI*1.5);
+		var fromHours = (this.value.getHours() / 12) * (Math.PI*2);
+		fromHours += toHours;
+		console.log(this.value.getMinutes());
 		// Clear
 		this._ctx.clearRect(0, 0, 100, 100);
 		
@@ -46,18 +60,58 @@ var p = AnalogClock.prototype = new example.views.BaseClock();
 		this._ctx.closePath();
 		this._ctx.fill();
 
-		// Arc
-		this._ctx.fillStyle = "#FFF";
+
+
+		// Seconds
+		this._ctx.fillStyle = "#bbb";
 		this._ctx.beginPath();
-		this._ctx.arc(50, 50, 45, from, to, true); 
+		this._ctx.arc(50, 50, 45, fromHours, toHours, true); 
 		this._ctx.lineTo(50, 50);
 		this._ctx.closePath();
 		this._ctx.fill();
+		//seconds Fill
+		this._ctx.fillStyle = "#555";
+		this._ctx.beginPath();
+		this._ctx.arc(50, 50, 35, 0, Math.PI*2, true);
+		this._ctx.lineTo(50, 50);
+		this._ctx.closePath();
+		this._ctx.fill();
+		
+		
+		// Minutes
+		this._ctx.fillStyle = "#ddd";
+		this._ctx.beginPath();
+		this._ctx.arc(50, 50, 30, fromMins, toMins, true); 
+		this._ctx.lineTo(50, 50);
+		this._ctx.closePath();
+		this._ctx.fill();
+		//Minutes Fill
+		this._ctx.fillStyle = "#555";
+		this._ctx.beginPath();
+		this._ctx.arc(50, 50, 20, 0, Math.PI*2, true);
+		this._ctx.lineTo(50, 50);
+		this._ctx.closePath();
+		this._ctx.fill();
+		
+		// Hours
+		this._ctx.fillStyle = "#FFF";
+		this._ctx.beginPath();
+		this._ctx.arc(50, 50, 15, fromSeconds, toSeconds, true); 
+		this._ctx.lineTo(50, 50);
+		this._ctx.closePath();
+		this._ctx.fill();
+		//Hours Fill
+
+		
+	
+
+	
 	}
 	
 	p.setTime = function(time)
 	{
-		this.value = time.getSeconds() / 60;
+
+		this.value = time;//
 		this.redraw();
 	}
 
