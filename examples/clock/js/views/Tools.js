@@ -18,6 +18,7 @@ var p = Tools.prototype = new View();
 	p.draw = function(){
 		this.View_draw();
 
+		// You should get the hand oof views by now... if not re-read the other ones
 		this.addDigitalButton = document.createElement("button");
 		this.addDigitalButton.innerHTML = this.getText("add_digital");
 		this._el.appendChild( this.addDigitalButton );

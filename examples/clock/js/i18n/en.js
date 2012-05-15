@@ -4,14 +4,19 @@
 
 (function(window) {
 
+	// Define English language translations here...
 	window.example.i18n = {
 
-		"title" : "JSylum",
-		"description" : "Project example with JSylum MVC framework.",
+		// Translations for the Title View
+		"title"				: "JSylum",
+		"description"		: "Project example with JSylum MVC framework.",
 
-		"add_digital" : "Add Digital Clock",
-		"add_analog" : "Add Analog Clock",
-		"digital_format" : "%1:%2:%3"
+		// Translations for the Tools
+		"add_digital"		: "Add Digital Clock",
+		"add_analog"		: "Add Analog Clock",
+
+		// The format to show the date in
+		"digital_format"	: "%1:%2:%3"
 
 	}
 

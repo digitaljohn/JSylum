@@ -13,10 +13,16 @@ var p = Header.prototype = new View();
 	p.draw = function(){
 		this.View_draw();
 
+		// Create the heading tiem
 		this.title = document.createElement("h1");
+
+		// Grab the translation from the config
 		this.title.innerHTML = this.getText("title");
+
+		// Add it to the container
 		this._el.appendChild( this.title );
 		
+		// As above pretty much
 		this.description = document.createElement("h2");
 		this.description.innerHTML = this.getText("description");
 		this._el.appendChild( this.description );

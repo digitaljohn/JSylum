@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	// Framework Setup
+	// Framework Setup - OFF WE GO!
 	var context = new ExampleContext();
 	
 });

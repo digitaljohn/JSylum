@@ -10,15 +10,19 @@ var p = Tools.prototype = new Mediator();
 	p.initialize = function(view) {
 		this.Mediator_initialize(view);
 		
-		var self = this;
+		// Store a reference to the scope "this"
+		var _this = this;
+
 		this._view.addDigitalButton.onclick = function()
 		{
-			self.dispatch( { type: 'addDigitalClock' } );
+			// Dispatch an event through the bus
+			_this.dispatch( { type: 'addDigitalClock' } );
 		}
 	
 		this._view.addAnalogButton.onclick = function()
 		{
-			self.dispatch( { type: 'addAnalogClock' } );
+			// Dispatch an event through the bus
+			_this.dispatch( { type: 'addAnalogClock' } );
 		}
 	}
 
