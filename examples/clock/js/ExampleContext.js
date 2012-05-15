@@ -25,6 +25,8 @@ var p = ExampleContext.prototype = new window.Context();
 		
 		// Singleton Models
 		injector.mapSingleton(example.models.Clock);
+
+		lang.setContent(example.i18n);
 		
 		// Run the setup command
 		example.commands.setup();

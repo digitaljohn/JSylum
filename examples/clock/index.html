@@ -19,9 +19,8 @@
 	</head>
 	
 	<body>
-		<h1>JSylum</h1>
-		<h2>Project example with JSylum mvc framework</h2>
 		
+		<div id="header"></div>
 		<div id="tools"></div>
 		<ul id="clocks"></ul>
 		
@@ -30,15 +29,16 @@
 
 		<!-- scripts concatenated and minified via ant build script-->
 
-		<script src="js/constants/namespace.js"></script>	
+		<script src="js/constants/namespace.js"></script>
+		<script src="js/constants/i18n.js"></script>
 
 		<script src="../../dist/jsylum.mvc.js"></script>
 
-		
+		<script src="js/views/Header.js"></script>
+		<script src="js/views/Tools.js"></script>
 		<script src="js/views/BaseClock.js"></script>
 		<script src="js/views/AnalogClock.js"></script>
-		<script src="js/views/DigitalClock.js"></script>
-		<script src="js/views/Tools.js"></script>
+		<script src="js/views/DigitalClock.js"></script>		
 		
 		<script src="js/mediators/Clock.js"></script>
 		<script src="js/mediators/Tools.js"></script>

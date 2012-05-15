@@ -10,6 +10,8 @@
 
 	c.setupViews = function()
 	{
+		var header = new example.views.Header( document.getElementById("header") );
+
 		example.commands.addAnalogClock();
 		example.commands.addDigitalClock();
 		

@@ -1,5 +1,5 @@
 /*
-* Context
+* LanguageManager
 * Visit http://jsylum.digitaljohn.co.uk/ for documentation, updates and examples.
 *
 * Copyright (c) 2012 DigitalJohn.
@@ -29,40 +29,57 @@
 (function(window) {
 
 /**
-* A Context is the class that configured and starts your application.
+* A base view component.
 *
-* @class Context
-* extends JSylum
+* @class Lang
 * @constructor
 **/
-var Context = function() {
-  this.initialize();
+var LanguageManager = function() {
+
 }
 
-var p = Context.prototype = new JSylum();
+var p = LanguageManager.prototype;
 
 	/**
-	 * @property JSylum_initialize
-	 * @type Function
-	 * @private
+	 * @property _content
+	 * @protected
+	 * type Object
+	 * @default null
 	 **/
-	p.JSylum_initialize = p.initialize;
+	p._content = {};
 
 	/** 
-	 * Initialization method.
+	 * The draw function, all object creation should happen here.
+	 **/
+	p.add = function(key, value) {
+		this._content[key] = value;
+	}
+
+	/** 
+	 * The redraw function, all object changes should happen here.
+	 **/
+	p.setContent = function(content) {
+		this._content = content;
+	}
+
+	/** 
+	 * getText
 	 *
 	 * @protected
 	 **/
-	p.initialize = function() {
-		window._initable = true;
-		window.injector = new Injector();
-		window.injector.mapSingleton( MediatorMap );
-		window.injector.mapSingleton( EventBus );
+	p.getText = function(key) {
+		var args = arguments;
 
-		window.lang = new LanguageManager();
+		if( arguments.length < 2 ) return this._content[key];
 
-		this.JSylum_initialize();
+		var string = String(this._content[key]);
+
+		var pattern = new RegExp("%([1-" + arguments.length + "])", "g");
+
+		return string.replace(pattern, function(match, index) {
+			return args[index];
+		});
 	}
 
-window.Context = Context;
+window.LanguageManager = LanguageManager;
 }(window));

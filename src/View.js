@@ -1,5 +1,5 @@
 /*
-* Injector
+* Lang
 * Visit http://jsylum.digitaljohn.co.uk/ for documentation, updates and examples.
 *
 * Copyright (c) 2012 DigitalJohn.
@@ -83,7 +83,6 @@ var p = View.prototype;
 	 * @protected
 	 **/
 	p.draw = function() {
-		console.log("HMMM");
 		this._el = document.createElement( this._elType );
 		this._parent.appendChild( this._el );
 	}
@@ -105,6 +104,16 @@ var p = View.prototype;
 	p.destroy = function() {
 		this._parent.removeChild(this._el);
 	}
+
+	/**
+	 * Gets some text from the LanguageManager
+	 *
+	 * @param {String} key
+	 * @protected
+	 **/
+	p.getText = function(key){
+		return window.lang.getText.apply(window.lang, arguments);
+	},
 
 window.View = View;
 }(window));

@@ -27,7 +27,7 @@ var p = DigitalClock.prototype = new example.views.BaseClock();
 		var m = this._padNumber( time.getMinutes() );
 		var s = this._padNumber( time.getSeconds() );
 
-		this._domElement.innerHTML = h + ":" + m + ":" + s;
+		this._domElement.innerHTML = this.getText("digital_format", h, m, s);
 	}
 
 	p._padNumber = function(n)

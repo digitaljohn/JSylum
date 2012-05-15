@@ -33,9 +33,6 @@ var p = AnalogClock.prototype = new example.views.BaseClock();
 	p.redraw = function(){
 		this.BaseClock_redraw();
 		
-		//var hours = this.value.getHours() ;
-		
-		
 		var toSeconds = (Math.PI*1.5);
 		var fromSeconds = (this.value.getSeconds() / 60) * (Math.PI*2);
 		fromSeconds += toSeconds;
@@ -43,12 +40,10 @@ var p = AnalogClock.prototype = new example.views.BaseClock();
 		var toMins = (Math.PI*1.5);
 		var fromMins = (this.value.getMinutes() / 60) * (Math.PI*2)
 		fromMins += toMins;
-		console.log(fromMins)
 		
 		var toHours = (Math.PI*1.5);
 		var fromHours = (this.value.getHours() / 12) * (Math.PI*2);
 		fromHours += toHours;
-		console.log(this.value.getMinutes());
 		// Clear
 		this._ctx.clearRect(0, 0, 100, 100);
 		

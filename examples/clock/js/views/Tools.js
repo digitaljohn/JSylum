@@ -19,11 +19,11 @@ var p = Tools.prototype = new View();
 		this.View_draw();
 
 		this.addDigitalButton = document.createElement("button");
-		this.addDigitalButton.innerHTML = "Add Digital Clock";
+		this.addDigitalButton.innerHTML = this.getText("add_digital");
 		this._el.appendChild( this.addDigitalButton );
 		
 		this.addAnalogButton = document.createElement("button");
-		this.addAnalogButton.innerHTML = "Add Analog Clock";
+		this.addAnalogButton.innerHTML = this.getText("add_analog");
 		this._el.appendChild( this.addAnalogButton );
 	}
 

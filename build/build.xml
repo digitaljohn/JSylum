@@ -26,6 +26,7 @@
     <concat destfile="${dist.merged.file.js}" fixlastline="yes" append="no">
 			<filelist dir="${src.dir}" files="
           Injector.js
+          LanguageManager.js
           EventBus.js
           MediatorMap.js
           JSylum.js
