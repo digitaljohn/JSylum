@@ -45,10 +45,11 @@ var p = AnalogClock.prototype = new example.views.BaseClock();
 		fromMins += toMins;
 		console.log(fromMins)
 		
+		var hours = this.value.getHours();
+		if(hours>12) hours-=12;
 		var toHours = (Math.PI*1.5);
-		var fromHours = (this.value.getHours() / 12) * (Math.PI*2);
+		var fromHours = (hours / 12) * (Math.PI*2);
 		fromHours += toHours;
-		console.log(this.value.getMinutes());
 		// Clear
 		this._ctx.clearRect(0, 0, 100, 100);
 		
