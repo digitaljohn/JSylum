@@ -62,10 +62,10 @@ var p = AnalogClock.prototype = new example.views.BaseClock();
 
 
 
-		// Seconds
-		this._ctx.fillStyle = "#bbb";
+		// Hours
+		this._ctx.fillStyle = "#00aeff";
 		this._ctx.beginPath();
-		this._ctx.arc(50, 50, 45, fromHours, toHours, true); 
+		this._ctx.arc(50, 50, 45, fromSeconds, toSeconds, true); 
 		this._ctx.lineTo(50, 50);
 		this._ctx.closePath();
 		this._ctx.fill();
@@ -79,7 +79,7 @@ var p = AnalogClock.prototype = new example.views.BaseClock();
 		
 		
 		// Minutes
-		this._ctx.fillStyle = "#ddd";
+		this._ctx.fillStyle = "#baff00";
 		this._ctx.beginPath();
 		this._ctx.arc(50, 50, 30, fromMins, toMins, true); 
 		this._ctx.lineTo(50, 50);
@@ -93,10 +93,10 @@ var p = AnalogClock.prototype = new example.views.BaseClock();
 		this._ctx.closePath();
 		this._ctx.fill();
 		
-		// Hours
-		this._ctx.fillStyle = "#FFF";
+		// Minutes
+		this._ctx.fillStyle = "#ff0066";
 		this._ctx.beginPath();
-		this._ctx.arc(50, 50, 15, fromSeconds, toSeconds, true); 
+		this._ctx.arc(50, 50, 15, fromHours, toHours, true); 
 		this._ctx.lineTo(50, 50);
 		this._ctx.closePath();
 		this._ctx.fill();
