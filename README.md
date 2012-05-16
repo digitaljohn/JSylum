@@ -41,7 +41,7 @@ $ cd /your/workspace
 $ git clone git@github.com:digitaljohn/JSylum.git JSylum
 ```
 
-Copy the current minified library from `dist/jsylum.mvc.js`.
+Copy the current minified library from `dist/jsylum.mvc.js` to your project.
 
 
 ## Building with ANT
@@ -51,5 +51,5 @@ If you make changes to the core source files within the `src` folder you will ne
 To compile your project, just perform the following from within the `build` directory:
 
 ```bash
-	$ and build
+	$ ant build
 ```
