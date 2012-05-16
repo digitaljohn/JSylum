@@ -1,5 +1,5 @@
 /*
-* Lang
+* View
 * Visit http://jsylum.digitaljohn.co.uk/ for documentation, updates and examples.
 *
 * Copyright (c) 2012 DigitalJohn.

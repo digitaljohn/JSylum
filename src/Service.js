@@ -36,12 +36,27 @@
 * extends JSylum
 * @constructor
 **/
-var Service = function(view) {
-  this.initialize(view);
+var Service = function() {
+  if(window._initable) this.initialize();
 }
 
 var p = Service.prototype = new JSylum();
 
+	/**
+	 * @property JSylum_initialize
+	 * @type Function
+	 * @private
+	 **/
+	p.JSylum_initialize = p.initialize;
+
+	/** 
+	 * Initialization method.
+	 *
+	 * @protected
+	 **/
+	p.initialize = function() {
+		this.JSylum_initialize();
+	}
 
 
 window.Service = Service;
