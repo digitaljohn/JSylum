@@ -17,15 +17,17 @@ var p = Status.prototype = new View();
 	p.draw = function(){
 		this.View_draw();
 
-		// You should get the hand of views by now... if not re-read the other ones
+		// Create a heading element and add it to the container
 		this.label = document.createElement("h3");
 		this._el.appendChild( this.label );
 
+		// Set its default number to 0
 		this.setNum(0);
 	}
 
 	p.setNum = function(num)
 	{
+		// Get the text from the language file
 		this.label.innerHTML = this.getText("status", num);
 	}
 
